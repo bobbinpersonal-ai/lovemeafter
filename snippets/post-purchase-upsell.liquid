@@ -1,0 +1,37 @@
+<div id="post-purchase-upsell-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; padding: 1.5rem;">
+  <div style="background: #ffffff; max-width: 480px; width: 100%; padding: 2rem; border-radius: 6px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+    <span style="background: #e6f4ea; color: #137333; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 12px; letter-spacing: 0.05em;">Order Placed! Special One-Time Offer</span>
+    
+    <h3 style="font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin: 1rem 0 0.5rem 0;">Complete The Look</h3>
+    <p style="font-size: 0.8rem; color: #555; margin-bottom: 1.25rem;">Add our Signature Silk Swim Cover-Up to your order for <strong style="color: #d9381e;">30% OFF</strong>. Ships in the same package.</p>
+    
+    <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; margin-bottom: 1.5rem; text-align: left; background: #fafafa; padding: 1rem; border-radius: 4px; border: 1px solid #eee;">
+      {% assign upsell_item = collections['all'].products.last %}
+      {% if upsell_item %}
+        <img src="{{ upsell_item.featured_image | image_url: width: 150 }}" style="width: 70px; height: 90px; object-fit: cover; border-radius: 2px;">
+        <div>
+          <p style="font-size: 0.8rem; font-weight: 700; margin: 0; text-transform: uppercase;">{{ upsell_item.title }}</p>
+          <p style="font-size: 0.8rem; margin: 0.2rem 0 0 0;"><s style="color:#999;">{{ upsell_item.price | money }}</s> <strong style="color:#d9381e;">{{ upsell_item.price | times: 0.7 | money }}</strong></p>
+        </div>
+      {% endif %}
+    </div>
+
+    <button onclick="acceptPostPurchaseOffer()" style="width: 100%; background: #000; color: #fff; border: none; padding: 1rem; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; margin-bottom: 0.75rem;">
+      ⚡ Add to My Order with 1-Click
+    </button>
+    
+    <button onclick="closePostPurchaseOffer()" style="background: none; border: none; font-size: 0.7rem; color: #777; text-decoration: underline; cursor: pointer;">
+      No thanks, I will pass on this 30% discount
+    </button>
+  </div>
+</div>
+
+<script>
+  function closePostPurchaseOffer() {
+    document.getElementById('post-purchase-upsell-modal').style.display = 'none';
+  }
+  function acceptPostPurchaseOffer() {
+    console.log('Post-purchase discount claimed');
+    closePostPurchaseOffer();
+  }
+</script>
