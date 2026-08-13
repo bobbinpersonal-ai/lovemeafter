@@ -106,3 +106,16 @@ h2.title,
   text-transform: none !important;
   letter-spacing: normal !important;
 }
+
+/* Force override Shopify Dawn inline styles */
+.banner__heading, 
+.rich-text__heading, 
+.image-with-text__heading,
+.title-wrapper-with-link .title,
+h2.title,
+.h1, .h2, .h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
