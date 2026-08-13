@@ -119,3 +119,23 @@ h2.title,
   text-transform: none !important;
   letter-spacing: normal !important;
 }
+
+/* Nuclear Font Override for Dawn Web Components & Inline Styles */
+*:not(i):not(svg):not(path):not(button):not(input):not(a):not(nav):not(header) {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+}
+
+header *, nav *, button, input, .button, .btn, a, .price, .price-item {
+  font-family: 'Inter', -apple-system, sans-serif !important;
+}
+
+.banner__heading, 
+.rich-text__heading, 
+.rich-text__text,
+h1, h2, h3, h4, h5, h6,
+.h0, .h1, .h2, .h3, .h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  letter-spacing: -0.01em !important;
+}
