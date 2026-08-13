@@ -435,3 +435,49 @@
     object-fit: cover !important;
   }
 </style>
+
+<!-- OVERRIDE SHOPIFY DAWN CSS VARIABLES & STYLES -->
+<style>
+  :root,
+  :root *,
+  body,
+  .color-scheme-1,
+  .color-scheme-2,
+  .color-scheme-3,
+  .color-scheme-4,
+  .color-scheme-5 {
+    --media-radius: 0px !important;
+    --card-corner-radius: 0px !important;
+    --buttons-radius: 0px !important;
+    --buttons-radius-outset: 0px !important;
+    --inputs-radius: 0px !important;
+    --variant-pills-radius: 0px !important;
+    --badge-corner-radius: 0px !important;
+    --popup-corner-radius: 0px !important;
+  }
+
+  /* HARD OVERRIDES FOR ELEMENTS AND CLASSES */
+  html body img,
+  html body .media,
+  html body .media img,
+  html body .card__media,
+  html body .card__inner,
+  html body .card,
+  html body .button,
+  html body .button--primary,
+  html body .button--secondary,
+  html body .field__input,
+  html body select,
+  html body input {
+    border-radius: 0px !important;
+    box-shadow: none !important;
+  }
+
+  html body .button,
+  html body .button--primary,
+  html body button[type="submit"] {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+    border: 1px solid #111111 !important;
+  }
+</style>
