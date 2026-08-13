@@ -1,0 +1,112 @@
+{% if template contains 'product' %}
+  <div id="size-guide-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 99999; align-items: center; justify-content: center; padding: 1rem;">
+    <div style="background: #ffffff; max-width: 520px; width: 100%; padding: 2rem 1.5rem; border-radius: 4px; position: relative; max-height: 90vh; overflow-y: auto;">
+      <button type="button" onclick="closeSizeGuide()" style="position: absolute; top: 12px; right: 16px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #888;">&times;</button>
+      
+      <div style="text-align: center; margin-bottom: 1.25rem;">
+        <span style="font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #666;">
+          LOVE ME AFTER — FIT GUIDE
+        </span>
+        <h3 style="font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin: 0.25rem 0 0 0;">
+          Size & Measurement Chart
+        </h3>
+      </div>
+
+      <!-- Unit Toggle -->
+      <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1rem;">
+        <button type="button" id="unit-in-btn" onclick="toggleUnits('in')" style="background: #000; color: #fff; border: 1px solid #000; padding: 0.35rem 0.9rem; font-size: 0.68rem; font-weight: 800; cursor: pointer; border-radius: 2px;">INCHES</button>
+        <button type="button" id="unit-cm-btn" onclick="toggleUnits('cm')" style="background: #fff; color: #000; border: 1px solid #ccc; padding: 0.35rem 0.9rem; font-size: 0.68rem; font-weight: 800; cursor: pointer; border-radius: 2px;">CM</button>
+      </div>
+
+      <!-- Measurement Table -->
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.72rem; text-align: center; margin-bottom: 1.25rem;">
+        <thead>
+          <tr style="background: #f4f4f5; border-bottom: 1px solid #e4e4e7;">
+            <th style="padding: 0.6rem; text-transform: uppercase;">Size</th>
+            <th style="padding: 0.6rem; text-transform: uppercase;">Bust</th>
+            <th style="padding: 0.6rem; text-transform: uppercase;">Waist</th>
+            <th style="padding: 0.6rem; text-transform: uppercase;">Hips</th>
+          </tr>
+        </thead>
+        <tbody id="size-table-body">
+          <tr style="border-bottom: 1px solid #f4f4f5;">
+            <td style="padding: 0.6rem; font-weight: 800;">XS (0-2)</td>
+            <td class="val-bust">31" - 33"</td>
+            <td class="val-waist">24" - 25"</td>
+            <td class="val-hips">34" - 35.5"</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f4f4f5;">
+            <td style="padding: 0.6rem; font-weight: 800;">S (4-6)</td>
+            <td class="val-bust">33.5" - 35"</td>
+            <td class="val-waist">26" - 27"</td>
+            <td class="val-hips">36" - 37.5"</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f4f4f5;">
+            <td style="padding: 0.6rem; font-weight: 800;">M (8-10)</td>
+            <td class="val-bust">35.5" - 37"</td>
+            <td class="val-waist">28" - 29.5"</td>
+            <td class="val-hips">38" - 39.5"</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #f4f4f5;">
+            <td style="padding: 0.6rem; font-weight: 800;">L (12-14)</td>
+            <td class="val-bust">37.5" - 39.5"</td>
+            <td class="val-waist">30" - 32"</td>
+            <td class="val-hips">40" - 42"</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Fit Note -->
+      <div style="background: #fafafa; border-left: 3px solid #000; padding: 0.65rem 0.8rem; font-size: 0.7rem; color: #444; line-height: 1.4;">
+        💡 <strong>Fit Tip:</strong> If you are between sizes or preferred fuller coverage, we recommend sizing up.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openSizeGuide() {
+      document.getElementById('size-guide-modal').style.display = 'flex';
+    }
+
+    function closeSizeGuide() {
+      document.getElementById('size-guide-modal').style.display = 'none';
+    }
+
+    const dataIn = [
+      { bust: '31" - 33"', waist: '24" - 25"', hips: '34" - 35.5"' },
+      { bust: '33.5" - 35"', waist: '26" - 27"', hips: '36" - 37.5"' },
+      { bust: '35.5" - 37"', waist: '28" - 29.5"', hips: '38" - 39.5"' },
+      { bust: '37.5" - 39.5"', waist: '30" - 32"', hips: '40" - 42"' }
+    ];
+
+    const dataCm = [
+      { bust: '79 - 84 cm', waist: '61 - 64 cm', hips: '86 - 90 cm' },
+      { bust: '85 - 89 cm', waist: '66 - 69 cm', hips: '91 - 95 cm' },
+      { bust: '90 - 94 cm', waist: '71 - 75 cm', hips: '96 - 100 cm' },
+      { bust: '95 - 100 cm', waist: '76 - 81 cm', hips: '101 - 107 cm' }
+    ];
+
+    function toggleUnits(unit) {
+      const inBtn = document.getElementById('unit-in-btn');
+      const cmBtn = document.getElementById('unit-cm-btn');
+      const dataset = unit === 'cm' ? dataCm : dataIn;
+
+      if (unit === 'cm') {
+        cmBtn.style.background = '#000'; cmBtn.style.color = '#fff'; cmBtn.style.border = '1px solid #000';
+        inBtn.style.background = '#fff'; inBtn.style.color = '#000'; inBtn.style.border = '1px solid #ccc';
+      } else {
+        inBtn.style.background = '#000'; inBtn.style.color = '#fff'; inBtn.style.border = '1px solid #000';
+        cmBtn.style.background = '#fff'; cmBtn.style.color = '#000'; cmBtn.style.border = '1px solid #ccc';
+      }
+
+      const rows = document.querySelectorAll('#size-table-body tr');
+      rows.forEach((row, idx) => {
+        if (dataset[idx]) {
+          row.querySelector('.val-bust').innerText = dataset[idx].bust;
+          row.querySelector('.val-waist').innerText = dataset[idx].waist;
+          row.querySelector('.val-hips').innerText = dataset[idx].hips;
+        }
+      });
+    }
+  </script>
+{% endif %}
