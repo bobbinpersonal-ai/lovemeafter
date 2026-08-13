@@ -3710,3 +3710,17 @@ h1, h2, h3, h4, .button, .card__heading {
   clip-path: none !important;
   overflow: hidden !important;
 }
+
+/* TARGET DAWN CARD MEDIA CONTAINERS EXPLICITLY */
+.card,
+.card-wrapper,
+.card__inner,
+.card__media,
+.card .media,
+.card img {
+  border-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+}
