@@ -1,0 +1,53 @@
+<div id="quick-view-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; padding: 1rem;">
+  <div style="background: #fff; max-width: 500px; width: 100%; padding: 2rem; border-radius: 4px; position: relative;">
+    <button onclick="document.getElementById('quick-view-modal').style.display='none'" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.25rem; cursor: pointer;">✕</button>
+    
+    <div id="quick-view-content">
+      <!-- Dynamic product details populate via JS -->
+    </div>
+  </div>
+</div>
+
+<script>
+  function openQuickView(productHandle) {
+    fetch('/products/' + productHandle + '.js')
+      .then(res => res.json())
+      .then(product => {
+        let optionsHtml = '';
+        if(product.variants.length > 1) {
+          optionsHtml = '<select id="qv-variant-select" style="width: 100%; padding: 0.75rem; margin: 1rem 0; font-size: 0.85rem; border: 1px solid #ccc;">';
+          product.variants.forEach(v => {
+            optionsHtml += `<option value="${v.id}">${v.title} - $${(v.price/100).toFixed(2)}</option>`;
+          });
+          optionsHtml += '</select>';
+        } else {
+          optionsHtml = `<input type="hidden" id="qv-variant-select" value="${product.variants[0].id}">`;
+        }
+
+        document.getElementById('quick-view-content').innerHTML = `
+          <div style="text-align: center;">
+            <img src="${product.featured_image}" style="width: 100%; max-height: 250px; object-fit: cover; margin-bottom: 1rem;">
+            <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.5rem 0;">${product.title}</h3>
+            <p style="font-weight: 700; margin-bottom: 1rem;">$${(product.price/100).toFixed(2)}</p>
+            ${optionsHtml}
+            <button onclick="addQuickViewToCart()" style="width: 100%; background: #000; color: #fff; padding: 0.85rem; border: none; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; cursor: pointer;">Add to Cart</button>
+          </div>
+        `;
+        document.getElementById('quick-view-modal').style.display = 'flex';
+      });
+  }
+
+  function addQuickViewToCart() {
+    const variantId = document.getElementById('qv-variant-select').value;
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] })
+    })
+    .then(res => res.json())
+    .then(() => {
+      document.getElementById('quick-view-modal').style.display = 'none';
+      window.location.reload();
+    });
+  }
+</script>
