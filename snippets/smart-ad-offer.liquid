@@ -1,0 +1,19 @@
+<div id="smart-offer-bar" style="background: #000000; color: #ffffff; font-size: 0.725rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.45rem 1rem; text-align: center; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+  <span>✨ First Order Discount Auto-Applied At Checkout</span>
+  <span style="background: #ffffff; color: #000000; padding: 2px 6px; border-radius: 2px; font-size: 0.65rem;">CODE: WELCOME10</span>
+</div>
+
+<script>
+  // Detect if traffic is coming from paid ads (UTM parameters)
+  (function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isAdTraffic = urlParams.has('utm_source') || urlParams.has('fbclid') || urlParams.has('gclid') || urlParams.has('ttclid');
+    
+    if (isAdTraffic) {
+      // Auto-store promo code for checkout without interrupting user
+      sessionStorage.setItem('auto_promo', 'WELCOME10');
+      // Ensure aggressive newsletter modals stay closed
+      window.suppressEmailPopup = true;
+    }
+  })();
+</script>
