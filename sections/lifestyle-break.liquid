@@ -1,0 +1,121 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="lifestyle-break{% if section.settings.layout == 'split' %} lifestyle-break--split{% endif %}">
+      {%- if section.settings.image != blank -%}
+        <div class="lifestyle-break__image">
+          <img
+            srcset="
+              {%- if section.settings.image.width >= 375 -%}{{ section.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
+              {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
+              {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+              {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+              {{ section.settings.image | image_url }} {{ section.settings.image.width }}w
+            "
+            sizes="100vw"
+            src="{{ section.settings.image | image_url: width: 1500 }}"
+            loading="lazy"
+            alt="{{ section.settings.image.alt | escape }}"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+          >
+        </div>
+      {%- endif -%}
+      
+      {%- if section.settings.content != blank -%}
+        <div class="lifestyle-break__content">
+          <div class="lifestyle-break__content-inner">
+            {{ section.settings.content }}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.lifestyle-break.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.lifestyle-break.settings.image.label"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "full",
+          "label": "t:sections.lifestyle-break.settings.layout.options__1.label"
+        },
+        {
+          "value": "split",
+          "label": "t:sections.lifestyle-break.settings.layout.options__2.label"
+        }
+      ],
+      "default": "full",
+      "label": "t:sections.lifestyle-break.settings.layout.label"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "default": "t:sections.lifestyle-break.settings.content.default",
+      "label": "t:sections.lifestyle-break.settings.content.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.lifestyle-break.presets.name"
+    }
+  ]
+}
+{% endschema %}
