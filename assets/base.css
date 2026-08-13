@@ -3724,3 +3724,54 @@ h1, h2, h3, h4, .button, .card__heading {
   border-bottom-right-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
 }
+
+/* JOAH BROWN TYPOGRAPHY & LAYOUT OVERRIDES */
+h1, h2, h3, .h1, .h2, .h3 {
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+}
+
+/* Full-width seamless video containers */
+.video-section iframe, .video-section video {
+  object-fit: cover !important;
+  width: 100% !important;
+}
+
+/* Crisp grid borders */
+.grid__item {
+  padding: 8px !important;
+}
+
+.card__information {
+  text-align: left !important;
+  padding-top: 12px !important;
+}
+
+.card__heading {
+  font-size: 0.85rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+.price {
+  font-size: 0.8rem !important;
+  opacity: 0.8;
+}
+
+/* Minimalist Button Styling */
+.button, .button--primary {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #000000 !important;
+  border-radius: 0px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.2em !important;
+  font-size: 0.75rem !important;
+  padding: 14px 28px !important;
+}
+
+.button:hover {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}

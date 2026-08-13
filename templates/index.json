@@ -1,110 +1,68 @@
 {
   "sections": {
-    "hero": {
-      "type": "hero-full-width",
+    "hero_video": {
+      "type": "video",
       "settings": {
-        "image": null,
-        "image_height": "large",
-        "heading": "Summer Essentials",
-        "heading_size": "hxxl",
-        "subheading": "Discover our signature collection",
-        "button_label": "Shop Collection",
+        "heading": "ESSENTIAL SILHOUETTES",
+        "text": "DESIGNED TO FLATTER. BUILT FOR CONFIDENCE.",
+        "button_label": "SHOP NEW ARRIVALS",
         "button_link": "/collections/all",
-        "button_style_secondary": false,
-        "desktop_content_position": "middle-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": true,
-        "color_scheme": "scheme-1",
-        "stack_images_on_mobile": true,
-        "mobile_content_alignment": "center",
-        "show_text_below": true,
-        "padding_top": 0,
-        "padding_bottom": 0
+        "full_width": true
       }
     },
-    "collection_pills": {
-      "type": "collection-pills-grid",
+    "ticker_bar": {
+      "type": "rich-text",
       "settings": {
-        "title": "Shop By Collection",
-        "heading_size": "h1",
-        "columns_desktop": 3,
-        "columns_mobile": 1,
-        "color_scheme": "scheme-1",
-        "padding_top": 60,
-        "padding_bottom": 60
-      },
-      "blocks": {
-        "collection_1": {
-          "type": "collection_item",
-          "settings": {
-            "image": null,
-            "title": "The Signature Collection",
-            "description": "Timeless designs crafted for the modern woman.",
-            "link": "/collections/signature",
-            "button_label": "Explore"
-          }
-        },
-        "collection_2": {
-          "type": "collection_item",
-          "settings": {
-            "image": null,
-            "title": "New Arrivals",
-            "description": "Fresh styles just in for summer.",
-            "link": "/collections/new-arrivals",
-            "button_label": "Shop New"
-          }
-        },
-        "collection_3": {
-          "type": "collection_item",
-          "settings": {
-            "image": null,
-            "title": "Resort Wear",
-            "description": "Luxury pieces for your getaway.",
-            "link": "/collections/resort",
-            "button_label": "Discover"
-          }
-        }
-      },
-      "block_order": [
-        "collection_1",
-        "collection_2",
-        "collection_3"
-      ]
+        "full_width": true
+      }
     },
-    "featured_products": {
-      "type": "featured-products-quickadd",
+    "featured_collection_1": {
+      "type": "featured-collection",
       "settings": {
-        "collection": "all",
+        "title": "THE FLEX-COLLECTION",
         "products_to_show": 8,
-        "title": "Featured Products",
-        "heading_size": "h1",
         "columns_desktop": 4,
-        "columns_mobile": 2,
-        "image_ratio": "adapt",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "color_scheme": "scheme-1",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "show_view_all": true
       }
     },
-    "lifestyle_break": {
-      "type": "lifestyle-break",
+    "mid_editorial_banner": {
+      "type": "image-banner",
       "settings": {
-        "image": null,
-        "layout": "full",
-        "content": "<p>Designed for the journey. Crafted for the moment.</p>",
-        "color_scheme": "scheme-1",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "image_aspect_ratio": "adapt",
+        "show_container": false
+      }
+    },
+    "editorial_story": {
+      "type": "rich-text",
+      "settings": {
+        "subheading": "OUR PHILOSOPHY",
+        "heading": "REFINED SENSUALITY & UNCOMPROMISED FIT",
+        "text": "Every piece is engineered to move with your body. Crafted from high-stretch performance fabrics with sleek, raw cuts."
+      }
+    },
+    "secondary_video_grid": {
+      "type": "video",
+      "settings": {
+        "heading": "BEHIND THE DESIGN",
+        "full_width": false
+      }
+    },
+    "featured_collection_2": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "MUST-HAVE SETS",
+        "products_to_show": 4,
+        "columns_desktop": 2
       }
     }
   },
   "order": [
-    "hero",
-    "collection_pills",
-    "featured_products",
-    "lifestyle_break"
+    "hero_video",
+    "ticker_bar",
+    "featured_collection_1",
+    "mid_editorial_banner",
+    "editorial_story",
+    "secondary_video_grid",
+    "featured_collection_2"
   ]
 }
