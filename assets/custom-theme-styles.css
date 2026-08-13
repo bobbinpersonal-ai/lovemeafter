@@ -1,141 +1,47 @@
 /* ==========================================================================
-   LOVE ME AFTER — Joah Brown High-Specificity Design System Overrides
+   LOVE ME AFTER — Complete Design System Overrides
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@400;600;700;900&display=swap');
-
-:root {
-  --joah-black: #111111;
-  --joah-white: #ffffff;
+/* Universal Font Variable Overrides */
+:root, :host, body {
+  --font-heading-family: 'Cormorant Garamond', Georgia, serif !important;
+  --font-body-family: 'Inter', sans-serif !important;
   --joah-cream: #f7f5f0;
-  --joah-border: #dcd7ce;
-  --joah-muted: #666666;
-  
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --joah-black: #111111;
 }
 
 /* Background Canvas */
-html, body, #page-container, .main-content, main {
+body, main, .gradient, .page-width {
   background-color: var(--joah-cream) !important;
-  color: var(--joah-black) !important;
 }
 
-/* All Headings & Section Titles Override */
-h1, h2, h3, h4, 
-.h1, .h2, .h3, .h4,
-.collection-hero__title,
+/* Typography Rules */
+h1, h2, h3, h4, h5, h6,
+.h0, .h1, .h2, .h3, .h4,
 .banner__heading,
 .rich-text__heading,
-.featured-collection__title,
-.title, .section-heading {
-  font-family: var(--font-serif) !important;
+.inline-richtext,
+.title,
+[class*="heading"] {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
   font-weight: 400 !important;
-  letter-spacing: -0.01em !important;
   text-transform: none !important;
+  letter-spacing: -0.01em !important;
   color: var(--joah-black) !important;
 }
 
-/* Header & Brand Identity */
-.header__heading-link, .site-header__logo, .site-nav__link, .header__menu-item {
-  font-family: var(--font-sans) !important;
+/* Navigation & Branding */
+header, nav, .header__menu-item, .brand-logo {
+  font-family: 'Inter', sans-serif !important;
   font-weight: 900 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.15em !important;
 }
 
-/* Product Cards */
-.card__heading, .card-information__text, .product-card__title {
-  font-family: var(--font-serif) !important;
-  font-size: 1.05rem !important;
-  font-weight: 400 !important;
-  text-transform: capitalize !important;
-  color: var(--joah-black) !important;
-}
-
-.price, .price-item, .product-card__price {
-  font-family: var(--font-sans) !important;
-  font-size: 0.8rem !important;
-  font-weight: 500 !important;
-  color: var(--joah-black) !important;
-}
-
-/* Buttons */
+/* Sharp Rectangular Buttons */
 .button, .btn, button[type="submit"] {
-  background-color: var(--joah-black) !important;
-  color: var(--joah-white) !important;
   border-radius: 0px !important;
-  font-family: var(--font-sans) !important;
-  font-size: 0.75rem !important;
-  font-weight: 700 !important;
+  font-family: 'Inter', sans-serif !important;
   text-transform: uppercase !important;
   letter-spacing: 0.15em !important;
-}
-
-/* High-priority theme variable overrides */
-:root, :host, body, page-container {
-  --font-heading-family: 'Cormorant Garamond', Georgia, serif !important;
-  --font-heading-style: normal !important;
-  --font-heading-weight: 400 !important;
-  --font-body-family: 'Inter', sans-serif !important;
-}
-
-/* Force direct targeting on all typography elements */
-h1, h2, h3, h4, h5, h6,
-.h0, .h1, .h2, .h3, .h4, .h5,
-[class*="heading"],
-[class*="title"],
-.inline-richtext,
-.banner__heading,
-.rich-text__heading {
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.01em !important;
-  text-transform: none !important;
-}
-
-/* Force override Shopify Dawn inline styles */
-.banner__heading, 
-.rich-text__heading, 
-.image-with-text__heading,
-.title-wrapper-with-link .title,
-h2.title,
-.h1, .h2, .h3 {
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-weight: 400 !important;
-  text-transform: none !important;
-  letter-spacing: normal !important;
-}
-
-/* Force override Shopify Dawn inline styles */
-.banner__heading, 
-.rich-text__heading, 
-.image-with-text__heading,
-.title-wrapper-with-link .title,
-h2.title,
-.h1, .h2, .h3 {
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-weight: 400 !important;
-  text-transform: none !important;
-  letter-spacing: normal !important;
-}
-
-/* Nuclear Font Override for Dawn Web Components & Inline Styles */
-*:not(i):not(svg):not(path):not(button):not(input):not(a):not(nav):not(header) {
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
-}
-
-header *, nav *, button, input, .button, .btn, a, .price, .price-item {
-  font-family: 'Inter', -apple-system, sans-serif !important;
-}
-
-.banner__heading, 
-.rich-text__heading, 
-.rich-text__text,
-h1, h2, h3, h4, h5, h6,
-.h0, .h1, .h2, .h3, .h4 {
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-weight: 400 !important;
-  text-transform: none !important;
-  letter-spacing: -0.01em !important;
 }
