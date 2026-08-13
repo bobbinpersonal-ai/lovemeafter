@@ -1,0 +1,30 @@
+<script>
+  window.dataLayer = window.dataLayer || [];
+  
+  // Custom Analytics Event Helper for Meta & TikTok Ads
+  function trackAdEvent(eventName, payload) {
+    window.dataLayer.push({
+      event: eventName,
+      ecommerce: payload
+    });
+    
+    // Meta Pixel Fallback
+    if (typeof fbq === 'function') {
+      fbq('trackCustom', eventName, payload);
+    }
+    // TikTok Pixel Fallback
+    if (typeof ttq === 'object' && typeof ttq.track === 'function') {
+      ttq.track(eventName, payload);
+    }
+  }
+
+  // Auto-track QuickViews and Cart Additions
+  document.addEventListener('click', function(e) {
+    if (e.target && e.target.innerText && e.target.innerText.includes('ADD TO CART')) {
+      trackAdEvent('PDP_AddToCart_Clicked', {
+        page_location: window.location.href,
+        timestamp: new Date().toISOString()
+      });
+    }
+  });
+</script>
