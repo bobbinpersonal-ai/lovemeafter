@@ -1,70 +1,103 @@
 /* ==========================================================================
-   LOVE ME AFTER - Brand Styling Architecture
+   LOVE ME AFTER — Accurate Joah Brown Editorial Design System
    ========================================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@400;600;700;900&display=swap');
+
 :root {
-  --lma-black: #0d0d0d;
-  --lma-white: #ffffff;
-  --lma-gray-light: #f4f4f5;
-  --lma-gray-border: #e4e4e7;
-  --lma-gray-muted: #71717a;
-  --lma-accent-red: #e11d48;
-  --lma-accent-green: #16a34a;
-  --lma-font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --lma-transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --joah-black: #111111;
+  --joah-white: #ffffff;
+  --joah-cream: #f7f5f0;
+  --joah-border: #dcd7ce;
+  --joah-muted: #666666;
+  
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  --transition-smooth: all 0.25s ease-in-out;
 }
 
-/* Base Component Overrides */
+/* Base Body & Layout Defaults */
 body {
-  font-family: var(--lma-font-primary);
-  color: var(--lma-black);
+  font-family: var(--font-sans);
+  background-color: var(--joah-cream) !important;
+  color: var(--joah-black) !important;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Refined Utility Buttons */
-.lma-btn-primary {
-  background-color: var(--lma-black) !important;
-  color: var(--lma-white) !important;
-  border: 1px solid var(--lma-black) !important;
-  font-size: 0.75rem !important;
-  font-weight: 800 !important;
+/* Header & Navigation Branding */
+.brand-logo, header nav, .nav-item {
+  font-family: var(--font-sans) !important;
+  font-weight: 900 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  padding: 0.85rem 1.5rem !important;
-  border-radius: 2px !important;
-  transition: var(--lma-transition) !important;
+  letter-spacing: 0.15em !important;
+}
+
+/* Editorial Serif Headings */
+h1, h2, h3, .editorial-heading {
+  font-family: var(--font-serif) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* Sharp Rectangular Primary Buttons */
+.lma-btn-primary, button[type="submit"], .btn-sharp {
+  background-color: var(--joah-black) !important;
+  color: var(--joah-white) !important;
+  border: 1px solid var(--joah-black) !important;
+  border-radius: 0px !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.15em !important;
+  padding: 1rem 2rem !important;
+  transition: var(--transition-smooth) !important;
   cursor: pointer !important;
 }
 
 .lma-btn-primary:hover {
-  background-color: #27272a !important;
-  border-color: #27272a !important;
-  transform: translateY(-1px);
+  background-color: #2a2a2a !important;
 }
 
-/* Modal Backdrop & Card Refinements */
-#exit-intent-modal,
-#vip-restock-modal,
-#size-guide-modal {
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+/* Minimalist Underline Inputs */
+input[type="email"], input[type="text"] {
+  border: none !important;
+  border-bottom: 1px solid var(--joah-black) !important;
+  border-radius: 0px !important;
+  padding: 0.75rem 0 !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  background: transparent !important;
+  color: var(--joah-black) !important;
+  outline: none !important;
 }
 
-/* Sticky Mobile Bar Elevation */
-#sticky-atc-bar {
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06) !important;
+input::placeholder {
+  color: var(--joah-muted);
+  letter-spacing: 0.1em;
 }
 
-/* Clean Typography for CRO Cards */
-.clean-demand-badge,
-.delivery-estimate-card,
-.pdp-scarcity-wrapper {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+/* Bracketed Editorial Links */
+a.joah-bracket-link, .editorial-cta {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--joah-black);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: var(--transition-smooth);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  #sticky-atc-bar {
-    padding: 0.6rem 0.85rem !important;
-  }
+a.joah-bracket-link:hover {
+  opacity: 0.6;
+}
+
+/* Minimal Dividers */
+hr, .section-divider {
+  border: none;
+  border-top: 1px solid var(--joah-border);
+  margin: 2rem 0;
 }
