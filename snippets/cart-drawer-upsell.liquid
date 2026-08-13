@@ -1,0 +1,45 @@
+<div class="cart-drawer-upsell-wrapper" style="padding: 1.5rem; border-top: 1px solid #e8e8e8;">
+  {% assign threshold = 7500 %}
+  {% assign current_total = cart.total_price %}
+  {% assign remaining = threshold | minus: current_total %}
+
+  <div class="shipping-bar-container" style="margin-bottom: 1.5rem;">
+    {% if remaining > 0 %}
+      {% assign remaining_formatted = remaining | money %}
+      <p style="font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.5rem; text-align: center;">
+        Add {{ remaining_formatted }} more for <strong>FREE SHIPPING</strong>
+      </p>
+      {% assign percent = current_total | times: 100 | divided_by: threshold %}
+      <div style="background: #e0e0e0; height: 4px; width: 100%; border-radius: 2px; overflow: hidden;">
+        <div style="background: #000; height: 100%; width: {{ percent }}%;"></div>
+      </div>
+    {% else %}
+      <p style="font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0; text-align: center; color: #111;">
+        🎉 You unlocked <strong>FREE SHIPPING</strong>!
+      </p>
+    {% endif %}
+  </div>
+
+  <div class="upsell-recommendations">
+    <p style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem;">
+      PAIRS WELL WITH
+    </p>
+    <div style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 0.5rem;">
+      {% for product in collections['all'].products limit: 3 %}
+        <div style="flex: 0 0 120px; text-align: center; border: 1px solid #f0f0f0; padding: 0.5rem; border-radius: 4px;">
+          <img src="{{ product.featured_image | image_url: width: 200 }}" alt="{{ product.title }}" style="width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover;">
+          <p style="font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin: 0.4rem 0 0.2rem 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            {{ product.title }}
+          </p>
+          <p style="font-size: 0.75rem; color: #666; margin-bottom: 0.4rem;">{{ product.price | money }}</p>
+          <form method="post" action="/cart/add">
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+            <button type="submit" style="background: #000; color: #fff; border: none; font-size: 0.65rem; text-transform: uppercase; padding: 0.4rem 0.6rem; width: 100%; letter-spacing: 0.05em; cursor: pointer;">
+              + Add
+            </button>
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
