@@ -3635,3 +3635,60 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+/* JOAH BROWN GLOBAL OVERRIDES */
+*, *::before, *::after, .button, .card, .card__inner, .field__input {
+  border-radius: 0px !important;
+  box-shadow: none !important;
+}
+
+h1, h2, h3, h4, .button, .card__heading {
+  text-transform: uppercase !important;
+  letter-spacing: 0.15em !important;
+  font-weight: 500 !important;
+}
+
+.card__media, .media {
+  aspect-ratio: 3 / 4 !important;
+  object-fit: cover !important;
+  border-radius: 0px !important;
+}
+
+.card__heading, .price {
+  font-size: 11px !important;
+}
+
+.button, .button--primary {
+  background-color: #111111 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #111111 !important;
+}
+
+.accordion-divider {
+  border-top: 1px solid #E5E5E5 !important;
+  margin-top: 1.5rem !important;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #E5E5E5 !important;
+}
+
+.accordion-summary {
+  padding: 1rem 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.accordion-summary h3 {
+  margin: 0 !important;
+  font-size: 11px !important;
+}
+
+.accordion-content {
+  padding: 0.8rem 0 1rem 0 !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  color: #444444 !important;
+}
