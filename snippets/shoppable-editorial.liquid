@@ -1,0 +1,17 @@
+<div class="shoppable-editorial-container" style="position: relative; max-width: 1200px; margin: 3rem auto; overflow: hidden; border-radius: 4px;">
+  <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Editorial Swimwear" style="width: 100%; height: auto; display: block; aspect-ratio: 16/9; object-fit: cover;">
+  
+  <div style="position: absolute; top: 1.5rem; left: 1.5rem; background: rgba(255,255,255,0.9); padding: 0.5rem 1rem; border-radius: 2px;">
+    <p style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0;">Summer Editorial • Tap to Shop</p>
+  </div>
+
+  {% assign editorial_product = collections['all'].products.first %}
+  {% if editorial_product %}
+    <!-- Hotspot Pin -->
+    <div style="position: absolute; top: 45%; left: 52%; transform: translate(-50%, -50%);">
+      <button onclick="openQuickView('{{ editorial_product.handle }}')" style="width: 28px; height: 28px; border-radius: 50%; background: #000; color: #fff; border: 2px solid #fff; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+        +
+      </button>
+    </div>
+  {% endif %}
+</div>
