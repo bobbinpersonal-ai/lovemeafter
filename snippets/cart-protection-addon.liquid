@@ -1,0 +1,17 @@
+<div class="cart-protection-wrapper" style="padding: 0.75rem 1rem; background: #fafafa; border: 1px solid #eee; border-radius: 4px; margin: 1rem 0; display: flex; align-items: center; justify-content: space-between;">
+  <div style="display: flex; align-items: center; gap: 0.75rem;">
+    <input type="checkbox" id="protection-addon" onchange="toggleProtection(this)" style="width: 16px; height: 16px; cursor: pointer; accent-color: #000;">
+    <label for="protection-addon" style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; margin: 0;">
+      🛡️ Swimwear Eco-Protection Guarantee (+$4.99)
+    </label>
+  </div>
+</div>
+
+<script>
+  function toggleProtection(checkbox) {
+    if (checkbox.checked) {
+      // Logic to add warranty/addon product ID to cart
+      console.log('Eco-Protection Guarantee added to cart');
+    }
+  }
+</script>
