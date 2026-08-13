@@ -1,0 +1,50 @@
+{% if template contains 'product' %}
+  <div id="size-guide-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1001; align-items: center; justify-content: center; padding: 1rem;">
+    <div style="background: #fff; max-width: 550px; width: 100%; padding: 2rem; border-radius: 4px; position: relative;">
+      <button onclick="document.getElementById('size-guide-modal').style.display='none'" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.25rem; cursor: pointer;">✕</button>
+      
+      <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; text-align: center; margin-bottom: 1.5rem;">Size & Fit Guide</h3>
+      
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem; text-align: center; margin-bottom: 1.5rem;">
+        <thead>
+          <tr style="border-bottom: 2px solid #000; font-weight: 700; text-transform: uppercase;">
+            <th style="padding: 0.5rem;">Size</th>
+            <th style="padding: 0.5rem;">Bust</th>
+            <th style="padding: 0.5rem;">Waist</th>
+            <th style="padding: 0.5rem;">Hips</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 0.6rem; font-weight: 700;">XS / 0-2</td>
+            <td>31"-32"</td>
+            <td>24"-25"</td>
+            <td>34"-35"</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 0.6rem; font-weight: 700;">S / 4-6</td>
+            <td>33"-34"</td>
+            <td>26"-27"</td>
+            <td>36"-37"</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 0.6rem; font-weight: 700;">M / 8-10</td>
+            <td>35"-36"</td>
+            <td>28"-29"</td>
+            <td>38"-39"</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 0.6rem; font-weight: 700;">L / 12-14</td>
+            <td>37"-39"</td>
+            <td>30"-32"</td>
+            <td>40"-42"</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size: 0.75rem; color: #666; line-height: 1.4; text-align: center; margin: 0;">
+        <strong>Fit Tip:</strong> Our swimwear features ultra-stretch memory fabric. If you fall between sizes, we recommend sizing up for full coverage or sizing down for a sculpted, high-cut fit.
+      </p>
+    </div>
+  </div>
+{% endif %}
