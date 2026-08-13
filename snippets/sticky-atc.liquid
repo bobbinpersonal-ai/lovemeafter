@@ -1,0 +1,36 @@
+{% if template contains 'product' %}
+  <div id="sticky-atc-bar" style="position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff; border-top: 1px solid #e8e8e8; padding: 0.75rem 1.5rem; z-index: 999; display: flex; align-items: center; justify-content: space-between; transform: translateY(100%); transition: transform 0.3s ease-in-out; box-shadow: 0 -4px 12px rgba(0,0,0,0.05);">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <img src="{{ product.featured_image | image_url: width: 100 }}" alt="{{ product.title }}" style="width: 45px; height: 60px; object-fit: cover;">
+      <div>
+        <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin: 0; letter-spacing: 0.05em;">{{ product.title }}</p>
+        <p style="font-size: 0.8rem; color: #666; margin: 0;">{{ product.selected_or_first_available_variant.price | money }}</p>
+      </div>
+    </div>
+    
+    <form method="post" action="/cart/add" style="margin: 0;">
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      <button type="submit" style="background: #000; color: #fff; border: none; padding: 0.75rem 1.75rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer;">
+        Add to Cart
+      </button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const stickyBar = document.getElementById('sticky-atc-bar');
+      const mainButton = document.querySelector('form[action*="/cart/add"] button[type="submit"]');
+      
+      if (stickyBar && mainButton) {
+        window.addEventListener('scroll', function() {
+          const btnPosition = mainButton.getBoundingClientRect().bottom;
+          if (btnPosition < 0) {
+            stickyBar.style.transform = 'translateY(0)';
+          } else {
+            stickyBar.style.transform = 'translateY(100%)';
+          }
+        });
+      }
+    });
+  </script>
+{% endif %}
