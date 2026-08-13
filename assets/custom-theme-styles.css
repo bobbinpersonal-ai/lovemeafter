@@ -1,5 +1,5 @@
 /* ==========================================================================
-   LOVE ME AFTER — Accurate Joah Brown Editorial Design System
+   LOVE ME AFTER — Joah Brown High-Specificity Design System Overrides
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@400;600;700;900&display=swap');
@@ -13,91 +13,61 @@
   
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  
-  --transition-smooth: all 0.25s ease-in-out;
 }
 
-/* Base Body & Layout Defaults */
-body {
-  font-family: var(--font-sans);
+/* Background Canvas */
+html, body, #page-container, .main-content, main {
   background-color: var(--joah-cream) !important;
   color: var(--joah-black) !important;
-  -webkit-font-smoothing: antialiased;
 }
 
-/* Header & Navigation Branding */
-.brand-logo, header nav, .nav-item {
+/* All Headings & Section Titles Override */
+h1, h2, h3, h4, 
+.h1, .h2, .h3, .h4,
+.collection-hero__title,
+.banner__heading,
+.rich-text__heading,
+.featured-collection__title,
+.title, .section-heading {
+  font-family: var(--font-serif) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+  color: var(--joah-black) !important;
+}
+
+/* Header & Brand Identity */
+.header__heading-link, .site-header__logo, .site-nav__link, .header__menu-item {
   font-family: var(--font-sans) !important;
   font-weight: 900 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.15em !important;
 }
 
-/* Editorial Serif Headings */
-h1, h2, h3, .editorial-heading {
+/* Product Cards */
+.card__heading, .card-information__text, .product-card__title {
   font-family: var(--font-serif) !important;
+  font-size: 1.05rem !important;
   font-weight: 400 !important;
-  letter-spacing: -0.01em !important;
+  text-transform: capitalize !important;
+  color: var(--joah-black) !important;
 }
 
-/* Sharp Rectangular Primary Buttons */
-.lma-btn-primary, button[type="submit"], .btn-sharp {
+.price, .price-item, .product-card__price {
+  font-family: var(--font-sans) !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  color: var(--joah-black) !important;
+}
+
+/* Buttons */
+.button, .btn, button[type="submit"] {
   background-color: var(--joah-black) !important;
   color: var(--joah-white) !important;
-  border: 1px solid var(--joah-black) !important;
   border-radius: 0px !important;
   font-family: var(--font-sans) !important;
   font-size: 0.75rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.15em !important;
-  padding: 1rem 2rem !important;
-  transition: var(--transition-smooth) !important;
-  cursor: pointer !important;
-}
-
-.lma-btn-primary:hover {
-  background-color: #2a2a2a !important;
-}
-
-/* Minimalist Underline Inputs */
-input[type="email"], input[type="text"] {
-  border: none !important;
-  border-bottom: 1px solid var(--joah-black) !important;
-  border-radius: 0px !important;
-  padding: 0.75rem 0 !important;
-  font-family: var(--font-sans) !important;
-  font-size: 0.75rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
-  background: transparent !important;
-  color: var(--joah-black) !important;
-  outline: none !important;
-}
-
-input::placeholder {
-  color: var(--joah-muted);
-  letter-spacing: 0.1em;
-}
-
-/* Bracketed Editorial Links */
-a.joah-bracket-link, .editorial-cta {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--joah-black);
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  transition: var(--transition-smooth);
-}
-
-a.joah-bracket-link:hover {
-  opacity: 0.6;
-}
-
-/* Minimal Dividers */
-hr, .section-divider {
-  border: none;
-  border-top: 1px solid var(--joah-border);
-  margin: 2rem 0;
 }
