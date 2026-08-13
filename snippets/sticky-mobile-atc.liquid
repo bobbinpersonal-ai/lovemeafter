@@ -1,0 +1,33 @@
+{% if template contains 'product' %}
+  <div id="sticky-mobile-bar" style="position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff; border-top: 1px solid #e0e0e0; padding: 0.75rem 1rem; z-index: 998; box-shadow: 0 -4px 12px rgba(0,0,0,0.1); display: none; align-items: center; justify-content: space-between; gap: 0.75rem;">
+    <div style="display: flex; align-items: center; gap: 0.5rem; overflow: hidden;">
+      <div style="font-size: 0.75rem; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+        {{ product.title }}
+      </div>
+      <div style="font-size: 0.75rem; font-weight: 700; color: #16a34a; white-space: nowrap;">
+        {{ product.price | money }}
+      </div>
+    </div>
+    <button type="button" onclick="triggerMobileATC()" style="background: #000000; color: #ffffff; border: none; padding: 0.65rem 1.25rem; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; border-radius: 2px; white-space: nowrap; cursor: pointer;">
+      BUY NOW
+    </button>
+  </div>
+
+  <style>
+    @media (max-width: 768px) {
+      #sticky-mobile-bar { display: flex !important; }
+      body { padding-bottom: 60px; }
+    }
+  </style>
+
+  <script>
+    function triggerMobileATC() {
+      const mainForm = document.querySelector('form[action*="/cart/add"]');
+      if (mainForm) {
+        mainForm.submit();
+      } else {
+        window.location.href = '/cart';
+      }
+    }
+  </script>
+{% endif %}
