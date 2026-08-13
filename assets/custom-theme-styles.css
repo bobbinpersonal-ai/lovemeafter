@@ -71,3 +71,25 @@ h1, h2, h3, h4,
   text-transform: uppercase !important;
   letter-spacing: 0.15em !important;
 }
+
+/* High-priority theme variable overrides */
+:root, :host, body, page-container {
+  --font-heading-family: 'Cormorant Garamond', Georgia, serif !important;
+  --font-heading-style: normal !important;
+  --font-heading-weight: 400 !important;
+  --font-body-family: 'Inter', sans-serif !important;
+}
+
+/* Force direct targeting on all typography elements */
+h1, h2, h3, h4, h5, h6,
+.h0, .h1, .h2, .h3, .h4, .h5,
+[class*="heading"],
+[class*="title"],
+.inline-richtext,
+.banner__heading,
+.rich-text__heading {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+}
