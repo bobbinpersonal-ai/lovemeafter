@@ -1,0 +1,84 @@
+<div id="exit-intent-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 9999; align-items: center; justify-content: center; padding: 1rem;">
+  <div style="background: #ffffff; max-width: 440px; width: 100%; padding: 2rem 1.5rem; border-radius: 6px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+    <button onclick="closeExitIntent()" style="position: absolute; top: 10px; right: 14px; background: none; border: none; font-size: 1.25rem; cursor: pointer; color: #888;">&times;</button>
+    
+    <span style="background: #fef2f2; color: #dc2626; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; padding: 4px 10px; border-radius: 12px; letter-spacing: 0.05em;">
+      ⚠️ WAIT! DON'T LEAVE YOUR ITEMS BEHIND
+    </span>
+    
+    <h3 style="font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin: 1rem 0 0.5rem 0;">
+      Your Cart Bag Is Reserved
+    </h3>
+    <p style="font-size: 0.75rem; color: #555; margin-bottom: 1rem; line-height: 1.4;">
+      Due to high demand from current ads, items in your bag will be released in:
+    </p>
+
+    <!-- Urgency Countdown Clock -->
+    <div style="font-size: 1.5rem; font-weight: 900; color: #dc2626; background: #fafafa; padding: 0.5rem; border-radius: 4px; border: 1px dashed #dc2626; margin-bottom: 1.25rem; letter-spacing: 0.1em;">
+      <span id="exit-timer-min">04</span>:<span id="exit-timer-sec">59</span>
+    </div>
+
+    <button onclick="checkoutNow()" style="width: 100%; background: #000; color: #fff; border: none; padding: 0.9rem; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border-radius: 2px; margin-bottom: 0.5rem;">
+      ⚡ Complete My Order Now
+    </button>
+    
+    <button onclick="closeExitIntent()" style="background: none; border: none; font-size: 0.68rem; color: #777; text-decoration: underline; cursor: pointer;">
+      Continue Browsing
+    </button>
+  </div>
+</div>
+
+<script>
+  (function() {
+    let exitTriggered = false;
+
+    // Desktop Exit Intent (Cursor moves out of viewport)
+    document.addEventListener('mouseleave', function(e) {
+      if (e.clientY < 10 && !exitTriggered) {
+        showExitIntent();
+      }
+    });
+
+    // Mobile / Tab Switch Exit Intent
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'hidden' && !exitTriggered) {
+        exitTriggered = true;
+      }
+    });
+
+    function showExitIntent() {
+      exitTriggered = true;
+      const modal = document.getElementById('exit-intent-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+        startExitTimer(299); // 5 minutes
+      }
+    }
+
+    function startExitTimer(duration) {
+      let timer = duration, minutes, seconds;
+      const minEl = document.getElementById('exit-timer-min');
+      const secEl = document.getElementById('exit-timer-sec');
+      
+      const interval = setInterval(function() {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minEl.textContent = minutes < 10 ? "0" + minutes : minutes;
+        secEl.textContent = seconds < 10 ? "0" + seconds : seconds;
+
+        if (--timer < 0) {
+          clearInterval(interval);
+        }
+      }, 1000);
+    }
+
+    window.closeExitIntent = function() {
+      document.getElementById('exit-intent-modal').style.display = 'none';
+    };
+
+    window.checkoutNow = function() {
+      window.location.href = '/checkout';
+    };
+  })();
+</script>
