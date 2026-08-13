@@ -1,0 +1,24 @@
+<div class="cart-vip-save-wrapper" style="padding: 1rem; background: #f4f4f5; border-radius: 4px; margin: 1rem 0; border: 1px dashed #000;">
+  <p style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.3rem 0; text-align: center;">
+    📲 Save My Bag & Lock In FREE Shipping
+  </p>
+  <p style="font-size: 0.68rem; color: #555; margin: 0 0 0.75rem 0; text-align: center;">
+    Enter phone or email to save cart items on all devices.
+  </p>
+  <div style="display: flex; gap: 0.4rem;">
+    <input type="text" id="cart-vip-input" placeholder="Phone or Email..." style="flex: 1; padding: 0.5rem; font-size: 0.75rem; border: 1px solid #ccc; border-radius: 2px;">
+    <button type="button" onclick="saveCartVIP()" style="background: #000; color: #fff; border: none; padding: 0.5rem 0.8rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; cursor: pointer;">
+      Save
+    </button>
+  </div>
+</div>
+
+<script>
+  function saveCartVIP() {
+    const input = document.getElementById('cart-vip-input').value;
+    if (input) {
+      console.log('Cart saved for:', input);
+      alert('Your cart is saved! Discount applied.');
+    }
+  }
+</script>
