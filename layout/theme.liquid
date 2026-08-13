@@ -403,3 +403,35 @@
     {%- endif -%}
   </body>
 </html>
+
+<!-- GLOBAL MINIMALIST OVERRIDES -->
+<style>
+  *, *::before, *::after,
+  .button, .button--primary, .button--secondary,
+  .card, .card__inner, .card__media,
+  .field__input, select, input,
+  .media, .media img, img,
+  .quick-add__submit, .product-form__submit {
+    border-radius: 0px !important;
+    box-shadow: none !important;
+  }
+
+  h1, h2, h3, h4,
+  .button, .card__heading,
+  .price, .product__title {
+    text-transform: uppercase !important;
+    letter-spacing: 0.15em !important;
+    font-weight: 500 !important;
+  }
+
+  .button, .button--primary, .product-form__submit {
+    background-color: #111111 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #111111 !important;
+  }
+
+  .card__media, .media {
+    aspect-ratio: 3 / 4 !important;
+    object-fit: cover !important;
+  }
+</style>
