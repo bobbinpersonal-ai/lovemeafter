@@ -3692,3 +3692,21 @@ h1, h2, h3, h4, .button, .card__heading {
   line-height: 1.6 !important;
   color: #444444 !important;
 }
+
+/* ULTIMATE OVERRIDE */
+:root {
+  --media-radius: 0px !important;
+  --card-corner-radius: 0px !important;
+  --buttons-radius: 0px !important;
+  --buttons-radius-outset: 0px !important;
+  --inputs-radius: 0px !important;
+  --variant-pills-radius: 0px !important;
+  --badge-corner-radius: 0px !important;
+  --popup-corner-radius: 0px !important;
+}
+
+.button, .card, .card__inner, .card__media, .media, .media img, img, .field__input, select, input {
+  border-radius: 0px !important;
+  clip-path: none !important;
+  overflow: hidden !important;
+}
