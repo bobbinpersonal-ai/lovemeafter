@@ -1,4 +1,6 @@
 {{ 'theme.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'lovemeafter-pdp.js' | asset_url }}" defer="defer"></script>
 
 <section class="jb-pdp-container" data-section-id="{{ section.id }}">
   <!-- Mobile Editorial Gallery (Horizontal Swipe / Vertical Stack on Desktop) -->
@@ -35,55 +37,73 @@
       </span>
       
       <h1 class="jb-pdp-title">{{ product.title }}</h1>
-      <p class="jb-pdp-price">{{ product.selected_or_first_available_variant.price | money }}</p>
+      <p class="jb-pdp-price" id="ProductPrice-{{ section.id }}">
+        {{ product.selected_or_first_available_variant.price | money }}
+      </p>
 
       <p class="jb-pdp-description">
         {{ product.description | strip_html | truncatewords: 35 }}
       </p>
 
       <!-- Variant Form -->
-      {% form 'product', product, id: 'jb-product-form' %}
-        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      <script type="application/json" id="ProductVariants-{{ section.id }}">
+        {{ product.variants | json }}
+      </script>
 
-        <!-- Option Selectors (Color & Size) -->
-        {% for option in product.options_with_values %}
-          <div class="jb-option-group">
-            <div class="jb-option-header">
-              <span class="jb-option-label">{{ option.name | uppercase }}:</span>
-              <span class="jb-option-selected" id="selected-{{ option.name | handle }}">{{ option.selected_value }}</span>
+      <product-form class="jb-product-form-wrapper" id="jb-product-form-{{ section.id }}" data-section-id="{{ section.id }}">
+        {% form 'product', product, id: 'jb-product-form', class: 'jb-product-form' %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+          <input type="hidden" name="quantity" value="1">
+
+          <!-- Option Selectors (Color & Size) -->
+          {% for option in product.options_with_values %}
+            <div class="jb-option-group" data-option-position="{{ option.position }}">
+              <div class="jb-option-header">
+                <span class="jb-option-label">{{ option.name | uppercase }}:</span>
+                <span class="jb-option-selected" id="selected-{{ option.name | handle }}-{{ section.id }}">{{ option.selected_value }}</span>
+              </div>
+
+              <div class="jb-option-values">
+                {% for value in option.values %}
+                  <button
+                    type="button"
+                    class="jb-option-btn {% if option.selected_value == value %}active{% endif %}"
+                    data-option-position="{{ option.position }}"
+                    data-value="{{ value | escape }}"
+                  >
+                    {{ value }}
+                  </button>
+                {% endfor %}
+              </div>
             </div>
-            
-            <div class="jb-option-values">
-              {% for value in option.values %}
-                <button 
-                  type="button" 
-                  class="jb-option-btn {% if option.selected_value == value %}active{% endif %}"
-                  data-option-name="{{ option.name | handle }}"
-                  data-value="{{ value | escape }}"
-                >
-                  {{ value }}
-                </button>
-              {% endfor %}
-            </div>
+          {% endfor %}
+
+          {% render 'pdp-size-trigger' %}
+
+          <div class="product-form__error-message-wrapper" role="alert" hidden>
+            <span class="product-form__error-message"></span>
           </div>
-        {% endfor %}
 
-        {% render 'pdp-size-trigger' %}
-
-        <!-- High-Converting Add To Cart Button -->
-        <button 
-          type="submit" 
-          name="add" 
-          class="btn-checkout jb-add-to-cart"
-          {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}
-        >
-          {% if product.selected_or_first_available_variant.available %}
-            ADD TO BAG — {{ product.selected_or_first_available_variant.price | money }}
-          {% else %}
-            SOLD OUT
-          {% endif %}
-        </button>
-      {% endform %}
+          <!-- High-Converting Add To Cart Button -->
+          <button
+            type="submit"
+            name="add"
+            id="ProductSubmitButton-{{ section.id }}"
+            class="btn-checkout jb-add-to-cart"
+            {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}
+          >
+            {%- render 'loading-spinner' -%}
+            <span class="jb-add-to-cart__text{% if product.selected_or_first_available_variant.available == false %} hidden{% endif %}">
+              {%- if product.selected_or_first_available_variant.available -%}
+                ADD TO BAG — {{ product.selected_or_first_available_variant.price | money }}
+              {%- else -%}
+                SOLD OUT
+              {%- endif -%}
+            </span>
+            <span class="sold-out-message hidden">SOLD OUT</span>
+          </button>
+        {% endform %}
+      </product-form>
 
       <!-- Trust & Frictionless Shipping Perks -->
       <div class="jb-pdp-perks">

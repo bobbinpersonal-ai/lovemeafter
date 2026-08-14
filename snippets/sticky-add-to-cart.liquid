@@ -27,13 +27,13 @@
       {%- endif -%}
       <div class="sticky-add-to-cart__text">
         <span class="sticky-add-to-cart__title">{{ product.title }}</span>
-        <span class="sticky-add-to-cart__price">{{ current_variant.price | money }}</span>
+        <span class="sticky-add-to-cart__price" id="StickyAtcPrice">{{ current_variant.price | money }}</span>
       </div>
     </div>
 
     <product-form class="sticky-add-to-cart__form">
       {%- form 'product', product, id: 'sticky-add-to-cart-form', class: 'sticky-add-to-cart__form-inner' -%}
-        <input type="hidden" name="id" value="{{ current_variant.id }}" disabled>
+        <input type="hidden" name="id" value="{{ current_variant.id }}" id="StickyAtcVariantId" disabled>
         <input type="hidden" name="quantity" value="1">
 
         <div class="product-form__error-message-wrapper" role="alert" hidden>
@@ -43,11 +43,12 @@
         <button
           type="submit"
           name="add"
+          id="StickyAtcSubmit"
           class="sticky-add-to-cart__submit button"
           {% unless current_variant.available %}disabled{% endunless %}
         >
           {%- render 'loading-spinner' -%}
-          <span{% if current_variant.available == false %} class="hidden"{% endif %}>
+          <span class="sticky-add-to-cart__submit-text{% if current_variant.available == false %} hidden{% endif %}">
             {%- if current_variant.available -%}
               Add to Bag — {{ current_variant.price | money }}
             {%- else -%}
@@ -87,6 +88,35 @@
         }
       }
     );
+  }
+
+  if (!window.__lmaStickyAtcSyncInit) {
+    window.__lmaStickyAtcSyncInit = true;
+    document.addEventListener('lma:variant:change', (event) => {
+      const { variant } = event.detail || {};
+      const idInput = document.getElementById('StickyAtcVariantId');
+      const priceEl = document.getElementById('StickyAtcPrice');
+      const submitButton = document.getElementById('StickyAtcSubmit');
+      if (!idInput || !submitButton) return;
+
+      const submitText = submitButton.querySelector('.sticky-add-to-cart__submit-text');
+      const soldOutMessage = submitButton.querySelector('.sold-out-message');
+
+      if (variant) {
+        idInput.value = variant.id;
+        idInput.disabled = false;
+        submitButton.disabled = !variant.available;
+        if (priceEl) priceEl.textContent = variant.price ? `$${(variant.price / 100).toFixed(2)}` : priceEl.textContent;
+        if (submitText) {
+          submitText.classList.toggle('hidden', !variant.available);
+          if (variant.available && priceEl) submitText.textContent = `Add to Bag — ${priceEl.textContent}`;
+        }
+        if (soldOutMessage) soldOutMessage.classList.toggle('hidden', variant.available);
+      } else {
+        idInput.disabled = true;
+        submitButton.disabled = true;
+      }
+    });
   }
 </script>
 {%- endif -%}

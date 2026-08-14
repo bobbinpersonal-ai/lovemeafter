@@ -1,0 +1,80 @@
+{{ 'section-image-tiles.css' | asset_url | stylesheet_tag }}
+
+<section class="image-tiles color-{{ section.settings.color_scheme }} gradient page-width">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="image-tiles__heading">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+
+  <div class="image-tiles__grid image-tiles__grid--{{ section.blocks.size }}">
+    {%- for block in section.blocks -%}
+      <a
+        href="{{ block.settings.link | default: '#' }}"
+        class="image-tile{% if block.settings.caption_only %} image-tile--caption-only{% endif %}"
+        {{ block.shopify_attributes }}
+      >
+        {%- if block.settings.image != blank -%}
+          <img
+            src="{{ block.settings.image | image_url: width: 900 }}"
+            alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+            loading="lazy"
+            width="{{ block.settings.image.width }}"
+            height="{{ block.settings.image.height }}"
+            class="image-tile__image"
+          >
+        {%- else -%}
+          <div class="image-tile__placeholder">
+            <span>{{ block.settings.title | default: 'IMAGE' | upcase }}</span>
+          </div>
+        {%- endif -%}
+        <div class="image-tile__scrim"></div>
+        <div class="image-tile__text">
+          {%- if block.settings.title != blank -%}
+            <span class="image-tile__title">{{ block.settings.title }}</span>
+          {%- endif -%}
+          {%- if block.settings.description != blank and block.settings.caption_only == false -%}
+            <span class="image-tile__description">{{ block.settings.description }}</span>
+          {%- endif -%}
+          {%- if block.settings.cta_label != blank and block.settings.caption_only == false -%}
+            <span class="image-tile__cta">{{ block.settings.cta_label }}</span>
+          {%- endif -%}
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image tiles",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "text", "id": "cta_label", "label": "CTA label" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "checkbox", "id": "caption_only", "label": "Caption only (no description/CTA shown)", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by World",
+      "settings": { "heading": "SHOP BY WORLD" },
+      "blocks": [
+        { "type": "tile", "settings": { "title": "AFTER DARK", "description": "Black lace, bodysuits, slips.", "cta_label": "Shop After Dark" } },
+        { "type": "tile", "settings": { "title": "ROMANCE", "description": "Ivory, blush, bows and delicate lace.", "cta_label": "Shop Romance" } },
+        { "type": "tile", "settings": { "title": "BEACH", "description": "Bikinis, one-pieces and pareos.", "cta_label": "Shop Beach" } },
+        { "type": "tile", "settings": { "title": "ESSENTIALS", "description": "Everyday underwear and core pieces.", "cta_label": "Shop Essentials" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,55 @@
+{{ 'section-newsletter-editorial.css' | asset_url | stylesheet_tag }}
+
+<section class="newsletter-editorial" style="background-color: {{ section.settings.background_color | default: settings.accent_color }}; color: #F3ECE2;">
+  <div class="newsletter-editorial__inner page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="newsletter-editorial__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <div class="newsletter-editorial__text">{{ section.settings.text }}</div>
+    {%- endif -%}
+
+    {%- form 'customer', id: 'NewsletterEditorial', class: 'newsletter-editorial__form' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+
+      {%- if form.posted_successfully? -%}
+        <p class="newsletter-editorial__success" tabindex="-1" autofocus>
+          Welcome to LOVEMEAFTER.
+        </p>
+      {%- else -%}
+        <div class="newsletter-editorial__field-row">
+          <label class="visually-hidden" for="NewsletterEditorial-email">Your email</label>
+          <input
+            id="NewsletterEditorial-email"
+            type="email"
+            name="contact[email]"
+            class="newsletter-editorial__input"
+            placeholder="YOUR EMAIL"
+            required
+          >
+          <button type="submit" class="newsletter-editorial__submit">JOIN US</button>
+        </div>
+        {%- if form.errors -%}
+          <p class="newsletter-editorial__error">{{ form.errors.messages['form'] }}</p>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter (editorial)",
+  "settings": [
+    { "type": "color", "id": "background_color", "label": "Background color", "info": "Defaults to the theme's accent color." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "STAY AFTER." },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "New drops. Private previews. Things worth staying up for."
+    }
+  ],
+  "presets": [{ "name": "Newsletter (editorial)" }]
+}
+{% endschema %}
