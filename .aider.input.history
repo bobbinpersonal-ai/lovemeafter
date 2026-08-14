@@ -470,3 +470,150 @@
 +  line-height: 1.6 !important;
 +  color: #444444 !important;
 +}
+
+# 2026-08-14 00:47:10.699529
++Please refactor and integrate our added files to recreate the exact UI/UX and layout shown in the Joah Brown mobile storefront:
++
++1. Layout & Styling (CSS):
++   - Implement a clean 2-column responsive grid for product cards with full-height portrait image ratios.
++   - Style the header with a centered bold logo, right-aligned utility icons (search, wishlist, cart count badge, mobile menu toggle).
++   - Add a sticky or horizontal-scrolling category navigation bar with pill buttons, along with a "Filter + Sort" trigger button.
++   - Set up custom CSS variables matching this warm, off-white/cream minimalist aesthetic (#FDFBF7 / light neutral background, dark typography).
++
++2. Product Card Component & Swatches:
++   - Structure product cards to include: fabric label tag (uppercase, small muted text), product title, price, and an inline '+' quick-add action.
++   - Render circular color swatch buttons beneath each product card, using an active outline ring state for the selected color.
++   - Implement image progress indicator bars across the bottom edge of product card images.
++
++3. Interactive JS Logic (main.js):
++   - Connect color swatches so clicking a swatch updates the active product image and updates the selected state on the swatch.
++   - Wire image gallery/carousel behavior so hovering or dragging/swiping over a card transitions between front and back/alternate image views.
++   - Wire the mobile hamburger menu to toggle the slide-over overlay navigation.
++
++Ensure DOM selectors across JS, templates, and CSS class names are strictly synchronized without breaking existing logic.
+
+# 2026-08-14 00:51:44.487179
++/exit
+
+# 2026-08-14 00:51:56.908829
++Please refactor and integrate our added files to recreate the exact UI/UX and layout shown in the Joah Brown mobile storefront:
++
++1. Layout & Styling (CSS):
++   - Implement a clean 2-column responsive grid for product cards with full-height portrait image ratios.
++   - Style the header with a centered bold logo, right-aligned utility icons (search, wishlist, cart count badge, mobile menu toggle).
++   - Add a sticky or horizontal-scrolling category navigation bar with pill buttons, along with a "Filter + Sort" trigger button.
++   - Set up custom CSS variables matching this warm, off-white/cream minimalist aesthetic (#FDFBF7 / light neutral background, dark typography).
++
++2. Product Card Component & Swatches:
++   - Structure product cards to include: fabric label tag (uppercase, small muted text), product title, price, and an inline '+' quick-add action.
++   - Render circular color swatch buttons beneath each product card, using an active outline ring state for the selected color.
++   - Implement image progress indicator bars across the bottom edge of product card images.
++
++3. Interactive JS Logic (main.js):
++   - Connect color swatches so clicking a swatch updates the active product image and updates the selected state on the swatch.
++   - Wire image gallery/carousel behavior so hovering or dragging/swiping over a card transitions between front and back/alternate image views.
++   - Wire the mobile hamburger menu to toggle the slide-over overlay navigation.
++
++Ensure DOM selectors across JS, templates, and CSS class names are strictly synchronized without breaking existing logic.
+
+# 2026-08-14 00:52:05.787319
++/exit
+
+# 2026-08-14 00:55:05.953385
++Please refactor and integrate our added files to recreate the exact UI/UX and layout shown in the Joah Brown mobile storefront:
++
++1. Layout & Styling (CSS):
++   - Implement a clean 2-column responsive grid for product cards with full-height portrait image ratios.
++   - Style the header with a centered bold logo, right-aligned utility icons (search, wishlist, cart count badge, mobile menu toggle).
++   - Add a sticky or horizontal-scrolling category navigation bar with pill buttons, along with a "Filter + Sort" trigger button.
++   - Set up custom CSS variables matching this warm, off-white/cream minimalist aesthetic (#FDFBF7 / light neutral background, dark typography).
++
++2. Product Card Component & Swatches:
++   - Structure product cards to include: fabric label tag (uppercase, small muted text), product title, price, and an inline '+' quick-add action.
++   - Render circular color swatch buttons beneath each product card, using an active outline ring state for the selected color.
++   - Implement image progress indicator bars across the bottom edge of product card images.
++
++3. Interactive JS Logic (main.js):
++   - Connect color swatches so clicking a swatch updates the active product image and updates the selected state on the swatch.
++   - Wire image gallery/carousel behavior so hovering or dragging/swiping over a card transitions between front and back/alternate image views.
++   - Wire the mobile hamburger menu to toggle the slide-over overlay navigation.
++
++Ensure DOM selectors across JS, templates, and CSS class names are strictly synchronized without breaking existing logic.
+
+# 2026-08-14 00:55:54.010204
++n
+
+# 2026-08-14 00:56:31.333378
++Please refactor and integrate our added files to recreate the exact UI/UX and layout shown in the Joah Brown mobile storefront:
++
++1. Layout & Styling (CSS):
++   - Implement a clean 2-column responsive grid for product cards with full-height portrait image ratios.
++   - Style the header with a centered bold logo, right-aligned utility icons (search, wishlist, cart count badge, mobile menu toggle).
++   - Add a sticky or horizontal-scrolling category navigation bar with pill buttons, along with a "Filter + Sort" trigger button.
++   - Set up custom CSS variables matching this warm, off-white/cream minimalist aesthetic (#FDFBF7 / light neutral background, dark typography).
++
++2. Product Card Component & Swatches:
++   - Structure product cards to include: fabric label tag (uppercase, small muted text), product title, price, and an inline '+' quick-add action.
++   - Render circular color swatch buttons beneath each product card, using an active outline ring state for the selected color.
++   - Implement image progress indicator bars across the bottom edge of product card images.
++
++3. Interactive JS Logic (main.js):
++   - Connect color swatches so clicking a swatch updates the active product image and updates the selected state on the swatch.
++   - Wire image gallery/carousel behavior so hovering or dragging/swiping over a card transitions between front and back/alternate image views.
++   - Wire the mobile hamburger menu to toggle the slide-over overlay navigation.
++
++Ensure DOM selectors across JS, templates, and CSS class names are strictly synchronized without breaking existing logic.
+
+# 2026-08-14 00:57:10.797504
++/exit
+
+# 2026-08-14 00:57:23.141594
++Please refactor and integrate our added files to recreate the exact UI/UX and layout shown in the Joah Brown mobile storefront:
++
++1. Layout & Styling (CSS):
++   - Implement a clean 2-column responsive grid for product cards with full-height portrait image ratios.
++   - Style the header with a centered bold logo, right-aligned utility icons (search, wishlist, cart count badge, mobile menu toggle).
++   - Add a sticky or horizontal-scrolling category navigation bar with pill buttons, along with a "Filter + Sort" trigger button.
++   - Set up custom CSS variables matching this warm, off-white/cream minimalist aesthetic (#FDFBF7 / light neutral background, dark typography).
++
++2. Product Card Component & Swatches:
++   - Structure product cards to include: fabric label tag (uppercase, small muted text), product title, price, and an inline '+' quick-add action.
++   - Render circular color swatch buttons beneath each product card, using an active outline ring state for the selected color.
++   - Implement image progress indicator bars across the bottom edge of product card images.
++
++3. Interactive JS Logic (main.js):
++   - Connect color swatches so clicking a swatch updates the active product image and updates the selected state on the swatch.
++   - Wire image gallery/carousel behavior so hovering or dragging/swiping over a card transitions between front and back/alternate image views.
++   - Wire the mobile hamburger menu to toggle the slide-over overlay navigation.
++
++Ensure DOM selectors across JS, templates, and CSS class names are strictly synchronized without breaking existing logic.
+
+# 2026-08-14 00:58:12.324802
++n
+
+# 2026-08-14 00:58:15.673194
++/exit
+
+# 2026-08-14 00:58:30.403134
++n
+
+# 2026-08-14 00:58:35.278019
++Please refactor and integrate our added files to recreate the exact UI/UX and layout shown in the Joah Brown mobile storefront:
++
++1. Layout & Styling (CSS):
++   - Implement a clean 2-column responsive grid for product cards with full-height portrait image ratios.
++   - Style the header with a centered bold logo, right-aligned utility icons (search, wishlist, cart count badge, mobile menu toggle).
++   - Add a sticky or horizontal-scrolling category navigation bar with pill buttons, along with a "Filter + Sort" trigger button.
++   - Set up custom CSS variables matching this warm, off-white/cream minimalist aesthetic (#FDFBF7 / light neutral background, dark typography).
++
++2. Product Card Component & Swatches:
++   - Structure product cards to include: fabric label tag (uppercase, small muted text), product title, price, and an inline '+' quick-add action.
++   - Render circular color swatch buttons beneath each product card, using an active outline ring state for the selected color.
++   - Implement image progress indicator bars across the bottom edge of product card images.
++
++3. Interactive JS Logic (main.js):
++   - Connect color swatches so clicking a swatch updates the active product image and updates the selected state on the swatch.
++   - Wire image gallery/carousel behavior so hovering or dragging/swiping over a card transitions between front and back/alternate image views.
++   - Wire the mobile hamburger menu to toggle the slide-over overlay navigation.
++
++Ensure DOM selectors across JS, templates, and CSS class names are strictly synchronized without breaking existing logic.
