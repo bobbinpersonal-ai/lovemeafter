@@ -245,6 +245,8 @@
         --variant-pills-shadow-horizontal-offset: {{ settings.variant_pills_shadow_horizontal_offset }}px;
         --variant-pills-shadow-vertical-offset: {{ settings.variant_pills_shadow_vertical_offset }}px;
         --variant-pills-shadow-blur-radius: {{ settings.variant_pills_shadow_blur }}px;
+
+        --color-accent: {{ settings.accent_color.red }},{{ settings.accent_color.green }},{{ settings.accent_color.blue }};
       }
 
       *,
@@ -280,6 +282,7 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'lovemeafter.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -344,8 +347,9 @@
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
     </ul>
 
-    {% render "size-assistant-modal" %}
-    {% render "mobile-express-bar" %}
+    {%- if template contains 'product' -%}
+      {%- render 'sticky-add-to-cart' -%}
+    {%- endif -%}
 
     {%- if request.design_mode -%}
       <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>

@@ -1,112 +1,129 @@
-{% if template contains 'product' %}
-  <div id="size-guide-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 99999; align-items: center; justify-content: center; padding: 1rem;">
-    <div style="background: #ffffff; max-width: 520px; width: 100%; padding: 2rem 1.5rem; border-radius: 4px; position: relative; max-height: 90vh; overflow-y: auto;">
-      <button type="button" onclick="closeSizeGuide()" style="position: absolute; top: 12px; right: 16px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #888;">&times;</button>
-      
-      <div style="text-align: center; margin-bottom: 1.25rem;">
-        <span style="font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #666;">
-          LOVE ME AFTER — FIT GUIDE
-        </span>
-        <h3 style="font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin: 0.25rem 0 0 0;">
-          Size & Measurement Chart
-        </h3>
+{% comment %}
+  Renders the LOVEMEAFTER size guide modal (Lingerie / Swim tabs, in/cm toggle).
+  Reuses Dawn's <modal-dialog> / <modal-opener> custom elements for open/close,
+  focus trap, and Escape handling -- no new modal JS.
+
+  Usage:
+  {% render 'size-guide-modal' %}
+{% endcomment %}
+
+<modal-dialog id="LmaSizeGuide-{{ section.id }}" class="size-guide-modal">
+  <div
+    class="size-guide-modal__dialog color-{{ settings.cart_color_scheme | default: 'scheme-1' }} gradient"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Size guide"
+    tabindex="-1"
+  >
+    <button
+      id="ModalClose-LmaSizeGuide-{{ section.id }}"
+      type="button"
+      class="size-guide-modal__close"
+      aria-label="{{ 'accessibility.close' | t }}"
+    >
+      {{ 'icon-close.svg' | inline_asset_content }}
+    </button>
+
+    <div class="size-guide-modal__content">
+      <p class="size-guide-modal__kicker">LOVEMEAFTER — Fit Guide</p>
+      <h2 class="size-guide-modal__heading">Size &amp; Measurement Guide</h2>
+
+      <div class="size-guide-modal__controls">
+        <div class="size-guide-tabs" role="tablist">
+          <button type="button" class="size-guide-tabs__btn is-active" data-size-tab="lingerie" role="tab" aria-selected="true">Lingerie</button>
+          <button type="button" class="size-guide-tabs__btn" data-size-tab="swim" role="tab" aria-selected="false">Swim</button>
+        </div>
+        <div class="size-guide-units" role="group" aria-label="Measurement unit">
+          <button type="button" class="size-guide-units__btn is-active" data-size-unit="in">IN</button>
+          <button type="button" class="size-guide-units__btn" data-size-unit="cm">CM</button>
+        </div>
       </div>
 
-      <!-- Unit Toggle -->
-      <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1rem;">
-        <button type="button" id="unit-in-btn" onclick="toggleUnits('in')" style="background: #000; color: #fff; border: 1px solid #000; padding: 0.35rem 0.9rem; font-size: 0.68rem; font-weight: 800; cursor: pointer; border-radius: 2px;">INCHES</button>
-        <button type="button" id="unit-cm-btn" onclick="toggleUnits('cm')" style="background: #fff; color: #000; border: 1px solid #ccc; padding: 0.35rem 0.9rem; font-size: 0.68rem; font-weight: 800; cursor: pointer; border-radius: 2px;">CM</button>
+      <div class="size-guide-panel" data-size-panel="lingerie">
+        <table class="size-guide-table">
+          <thead>
+            <tr>
+              <th scope="col">Size</th>
+              <th scope="col">Bust</th>
+              <th scope="col">Waist</th>
+              <th scope="col">Hips</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>XS / 0–2</td>
+              <td><span data-unit="in">31–33"</span><span data-unit="cm" hidden>79–84 cm</span></td>
+              <td><span data-unit="in">24–25"</span><span data-unit="cm" hidden>61–64 cm</span></td>
+              <td><span data-unit="in">34–35.5"</span><span data-unit="cm" hidden>86–90 cm</span></td>
+            </tr>
+            <tr>
+              <td>S / 4–6</td>
+              <td><span data-unit="in">33.5–35"</span><span data-unit="cm" hidden>85–89 cm</span></td>
+              <td><span data-unit="in">26–27"</span><span data-unit="cm" hidden>66–69 cm</span></td>
+              <td><span data-unit="in">36–37.5"</span><span data-unit="cm" hidden>91–95 cm</span></td>
+            </tr>
+            <tr>
+              <td>M / 8–10</td>
+              <td><span data-unit="in">35.5–37"</span><span data-unit="cm" hidden>90–94 cm</span></td>
+              <td><span data-unit="in">28–29.5"</span><span data-unit="cm" hidden>71–75 cm</span></td>
+              <td><span data-unit="in">38–39.5"</span><span data-unit="cm" hidden>96–100 cm</span></td>
+            </tr>
+            <tr>
+              <td>L / 12–14</td>
+              <td><span data-unit="in">37.5–39.5"</span><span data-unit="cm" hidden>95–100 cm</span></td>
+              <td><span data-unit="in">30–32"</span><span data-unit="cm" hidden>76–81 cm</span></td>
+              <td><span data-unit="in">40–42"</span><span data-unit="cm" hidden>101–107 cm</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="size-guide-modal__note">
+          <strong>Fit tip:</strong> if you're between sizes, we recommend sizing up for fuller coverage.
+        </p>
       </div>
 
-      <!-- Measurement Table -->
-      <table style="width: 100%; border-collapse: collapse; font-size: 0.72rem; text-align: center; margin-bottom: 1.25rem;">
-        <thead>
-          <tr style="background: #f4f4f5; border-bottom: 1px solid #e4e4e7;">
-            <th style="padding: 0.6rem; text-transform: uppercase;">Size</th>
-            <th style="padding: 0.6rem; text-transform: uppercase;">Bust</th>
-            <th style="padding: 0.6rem; text-transform: uppercase;">Waist</th>
-            <th style="padding: 0.6rem; text-transform: uppercase;">Hips</th>
-          </tr>
-        </thead>
-        <tbody id="size-table-body">
-          <tr style="border-bottom: 1px solid #f4f4f5;">
-            <td style="padding: 0.6rem; font-weight: 800;">XS (0-2)</td>
-            <td class="val-bust">31" - 33"</td>
-            <td class="val-waist">24" - 25"</td>
-            <td class="val-hips">34" - 35.5"</td>
-          </tr>
-          <tr style="border-bottom: 1px solid #f4f4f5;">
-            <td style="padding: 0.6rem; font-weight: 800;">S (4-6)</td>
-            <td class="val-bust">33.5" - 35"</td>
-            <td class="val-waist">26" - 27"</td>
-            <td class="val-hips">36" - 37.5"</td>
-          </tr>
-          <tr style="border-bottom: 1px solid #f4f4f5;">
-            <td style="padding: 0.6rem; font-weight: 800;">M (8-10)</td>
-            <td class="val-bust">35.5" - 37"</td>
-            <td class="val-waist">28" - 29.5"</td>
-            <td class="val-hips">38" - 39.5"</td>
-          </tr>
-          <tr style="border-bottom: 1px solid #f4f4f5;">
-            <td style="padding: 0.6rem; font-weight: 800;">L (12-14)</td>
-            <td class="val-bust">37.5" - 39.5"</td>
-            <td class="val-waist">30" - 32"</td>
-            <td class="val-hips">40" - 42"</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- Fit Note -->
-      <div style="background: #fafafa; border-left: 3px solid #000; padding: 0.65rem 0.8rem; font-size: 0.7rem; color: #444; line-height: 1.4;">
-        💡 <strong>Fit Tip:</strong> If you are between sizes or preferred fuller coverage, we recommend sizing up.
+      <div class="size-guide-panel" data-size-panel="swim" hidden>
+        <table class="size-guide-table">
+          <thead>
+            <tr>
+              <th scope="col">Size</th>
+              <th scope="col">Bust</th>
+              <th scope="col">Waist</th>
+              <th scope="col">Hips</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>XS / 0–2</td>
+              <td><span data-unit="in">31–32"</span><span data-unit="cm" hidden>79–81 cm</span></td>
+              <td><span data-unit="in">24–25"</span><span data-unit="cm" hidden>61–64 cm</span></td>
+              <td><span data-unit="in">34–35"</span><span data-unit="cm" hidden>86–89 cm</span></td>
+            </tr>
+            <tr>
+              <td>S / 4–6</td>
+              <td><span data-unit="in">33–34"</span><span data-unit="cm" hidden>84–86 cm</span></td>
+              <td><span data-unit="in">26–27"</span><span data-unit="cm" hidden>66–69 cm</span></td>
+              <td><span data-unit="in">36–37"</span><span data-unit="cm" hidden>91–94 cm</span></td>
+            </tr>
+            <tr>
+              <td>M / 8–10</td>
+              <td><span data-unit="in">35–36"</span><span data-unit="cm" hidden>89–91 cm</span></td>
+              <td><span data-unit="in">28–29"</span><span data-unit="cm" hidden>71–74 cm</span></td>
+              <td><span data-unit="in">38–39"</span><span data-unit="cm" hidden>96–99 cm</span></td>
+            </tr>
+            <tr>
+              <td>L / 12–14</td>
+              <td><span data-unit="in">37–39"</span><span data-unit="cm" hidden>94–99 cm</span></td>
+              <td><span data-unit="in">30–32"</span><span data-unit="cm" hidden>76–81 cm</span></td>
+              <td><span data-unit="in">40–42"</span><span data-unit="cm" hidden>101–107 cm</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="size-guide-modal__note">
+          <strong>Fit tip:</strong> our swim fabric has four-way stretch. Size down for a sculpted fit, size up for more coverage.
+        </p>
       </div>
     </div>
   </div>
+</modal-dialog>
 
-  <script>
-    function openSizeGuide() {
-      document.getElementById('size-guide-modal').style.display = 'flex';
-    }
-
-    function closeSizeGuide() {
-      document.getElementById('size-guide-modal').style.display = 'none';
-    }
-
-    const dataIn = [
-      { bust: '31" - 33"', waist: '24" - 25"', hips: '34" - 35.5"' },
-      { bust: '33.5" - 35"', waist: '26" - 27"', hips: '36" - 37.5"' },
-      { bust: '35.5" - 37"', waist: '28" - 29.5"', hips: '38" - 39.5"' },
-      { bust: '37.5" - 39.5"', waist: '30" - 32"', hips: '40" - 42"' }
-    ];
-
-    const dataCm = [
-      { bust: '79 - 84 cm', waist: '61 - 64 cm', hips: '86 - 90 cm' },
-      { bust: '85 - 89 cm', waist: '66 - 69 cm', hips: '91 - 95 cm' },
-      { bust: '90 - 94 cm', waist: '71 - 75 cm', hips: '96 - 100 cm' },
-      { bust: '95 - 100 cm', waist: '76 - 81 cm', hips: '101 - 107 cm' }
-    ];
-
-    function toggleUnits(unit) {
-      const inBtn = document.getElementById('unit-in-btn');
-      const cmBtn = document.getElementById('unit-cm-btn');
-      const dataset = unit === 'cm' ? dataCm : dataIn;
-
-      if (unit === 'cm') {
-        cmBtn.style.background = '#000'; cmBtn.style.color = '#fff'; cmBtn.style.border = '1px solid #000';
-        inBtn.style.background = '#fff'; inBtn.style.color = '#000'; inBtn.style.border = '1px solid #ccc';
-      } else {
-        inBtn.style.background = '#000'; inBtn.style.color = '#fff'; inBtn.style.border = '1px solid #000';
-        cmBtn.style.background = '#fff'; cmBtn.style.color = '#000'; cmBtn.style.border = '1px solid #ccc';
-      }
-
-      const rows = document.querySelectorAll('#size-table-body tr');
-      rows.forEach((row, idx) => {
-        if (dataset[idx]) {
-          row.querySelector('.val-bust').innerText = dataset[idx].bust;
-          row.querySelector('.val-waist').innerText = dataset[idx].waist;
-          row.querySelector('.val-hips').innerText = dataset[idx].hips;
-        }
-      });
-    }
-  </script>
-{% endif %}
+<script src="{{ 'size-guide-modal.js' | asset_url }}" defer="defer"></script>

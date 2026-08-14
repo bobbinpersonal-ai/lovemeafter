@@ -68,6 +68,8 @@
           </div>
         {% endfor %}
 
+        {% render 'pdp-size-trigger' %}
+
         <!-- High-Converting Add To Cart Button -->
         <button 
           type="submit" 
@@ -98,6 +100,8 @@
     </div>
   </div>
 </section>
+
+{% render 'size-guide-modal' %}
 
 {% schema %}
 {

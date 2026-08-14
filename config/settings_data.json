@@ -191,7 +191,8 @@
           }
         }
       },
-      "accent_color": "#5A1F22"
+      "accent_color": "#5A1F22",
+      "free_shipping_threshold": 100
     }
   }
 }
