@@ -1,0 +1,30 @@
+<section style="padding: 60px 40px; max-width: 1200px; margin: auto;">
+  <h2 style="text-align: center; font-weight: 300; text-transform: uppercase; letter-spacing: 2px; font-size: 18px;">Best Sellers</h2>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 40px;">
+    {% for product in section.settings.collection.products limit: 4 %}
+      <div class="product-item" style="text-align: center;">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | img_url: '600x600' }}" alt="{{ product.title }}" style="width: 100%; height: auto; margin-bottom: 10px;">
+        </a>
+        <p style="margin: 5px 0; font-size: 14px;">{{ product.title }}</p>
+        <span style="font-size: 13px; color: #555;">{{ product.price | money }}</span>
+        <div style="margin-top: 5px; font-size: 10px; letter-spacing: 1px;">
+          {% for option in product.options_with_values %}
+            <span>{{ option.values | join: ' • ' }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div style="text-align: center; margin-top: 30px;">
+    <a href="{{ section.settings.collection.url }}" style="border-bottom: 1px solid black; text-decoration: none; color: black; font-size: 12px; text-transform: uppercase;">Shop Best Sellers</a>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Best Sellers",
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Collection" }
+  ]
+}
+{% endschema %}
