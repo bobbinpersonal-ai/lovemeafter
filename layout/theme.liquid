@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="js" lang="{{ request.locale.iso_code }}">
-  {{ 'theme.css' | asset_url | stylesheet_tag }}
   <head>
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -320,54 +320,35 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-<!-- STRICT MINIMALIST OVERRIDES -->
-<style>
-  :root, :root *, body, body * {
-    --media-radius: 0px !important;
-    --card-corner-radius: 0px !important;
-    --buttons-radius: 0px !important;
-    --buttons-radius-outset: 0px !important;
-    --inputs-radius: 0px !important;
-    --variant-pills-radius: 0px !important;
-    --badge-corner-radius: 0px !important;
-    --popup-corner-radius: 0px !important;
-  }
+  </head>
 
-  html body *,
-  html body *::before,
-  html body *::after,
-  html body img,
-  html body video,
-  html body svg,
-  html body iframe,
-  html body a,
-  html body button,
-  html body input,
-  html body select,
-  html body textarea,
-  html body div,
-  html body span,
-  html body .media,
-  html body .media img,
-  html body .media > *,
-  html body .card,
-  html body .card__inner,
-  html body .card__media,
-  html body .card__media .media,
-  html body .card__media img,
-  html body .button,
-  html body .button--primary,
-  html body .button--secondary,
-  html body [class*="button"],
-  html body [class*="card"],
-  html body [class*="media"] {
-    border-radius: 0px !important;
-    -webkit-border-radius: 0px !important;
-    box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-  }
-</style>
+  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ "accessibility.skip_to_text" | t }}
+    </a>
 
+    {%- if settings.cart_type == 'drawer' -%}
+      {%- render 'cart-drawer' -%}
+    {%- endif -%}
 
-{% render "size-assistant-modal" %}
-{% render "mobile-express-bar" %}
+    {% sections 'header-group' %}
+
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    {% render "size-assistant-modal" %}
+    {% render "mobile-express-bar" %}
+
+    {%- if request.design_mode -%}
+      <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+  </body>
+</html>

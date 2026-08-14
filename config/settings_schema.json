@@ -1,7 +1,7 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Dawn",
+    "theme_name": "LOVEMEAFTER",
     "theme_version": "16.0.0",
     "theme_author": "Shopify",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
@@ -98,6 +98,13 @@
           "on_secondary_button": "secondary_button_label",
           "secondary_button_border": "secondary_button_label"
         }
+      },
+      {
+        "type": "color",
+        "id": "accent_color",
+        "label": "Accent color (oxblood)",
+        "info": "Used for the newsletter section background, cart free-shipping progress bar, and sale/accent CTAs.",
+        "default": "#5A1F22"
       }
     ]
   },
@@ -111,7 +118,7 @@
       {
         "type": "font_picker",
         "id": "type_header_font",
-        "default": "assistant_n4",
+        "default": "playfair_display_n4",
         "label": "t:settings_schema.typography.settings.type_header_font.label"
       },
       {
@@ -131,7 +138,7 @@
       {
         "type": "font_picker",
         "id": "type_body_font",
-        "default": "assistant_n4",
+        "default": "helvetica_n4",
         "label": "t:settings_schema.typography.settings.type_body_font.label"
       },
       {
