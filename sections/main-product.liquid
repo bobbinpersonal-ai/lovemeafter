@@ -1,27 +1,112 @@
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; max-width: 1200px; margin: 40px auto; padding: 0 20px;">
-  <div class="product-images">
-    <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}" style="width: 100%; height: auto;">
-  </div>
-  <div class="product-info">
-    <h1 style="font-weight: 300; font-size: 28px; margin: 0 0 10px;">{{ product.title }}</h1>
-    <p style="font-size: 18px; color: #333;">{{ product.price | money }}</p>
-    <div style="margin: 20px 0;">
-      <label style="text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">Size</label>
-      <div style="display: flex; gap: 10px; margin-top: 10px;">
-        {% for variant in product.variants %}
-          <div style="border: 1px solid #ddd; padding: 10px 20px; cursor: pointer;">{{ variant.title }}</div>
-        {% endfor %}
+{{ 'theme.css' | asset_url | stylesheet_tag }}
+
+<section class="jb-pdp-container" data-section-id="{{ section.id }}">
+  <!-- Mobile Editorial Gallery (Horizontal Swipe / Vertical Stack on Desktop) -->
+  <div class="jb-pdp-gallery">
+    {% if product.media.size > 0 %}
+      {% for media in product.media %}
+        <div class="jb-pdp-media-item">
+          <img 
+            src="{{ media | image_url: width: 1200 }}" 
+            alt="{{ media.alt | escape }}" 
+            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+            class="jb-pdp-img"
+          >
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="jb-pdp-media-item">
+        {{ 'product-1' | placeholder_svg_tag: 'jb-pdp-img' }}
       </div>
-    </div>
-    <button style="width: 100%; background: #999; color: white; border: none; padding: 18px; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin-top: 20px;">Select Your Size</button>
-    <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
-      <details><summary style="text-transform: uppercase; font-size: 13px; font-weight: bold; cursor: pointer;">Description</summary><p style="font-size: 14px; color: #555; margin-top: 10px;">{{ product.description }}</p></details>
+    {% endif %}
+  </div>
+
+  <!-- PDP Form & High-Conversion Panel -->
+  <div class="jb-pdp-details">
+    <div class="jb-pdp-sticky-inner">
+      
+      <!-- Fabric Tag & Header -->
+      <span class="jb-card-fabric">
+        {% if product.metafields.custom.fabric %}
+          {{ product.metafields.custom.fabric }}
+        {% else %}
+          SIGNATURE HEAVYWEIGHT COTTON
+        {% endif %}
+      </span>
+      
+      <h1 class="jb-pdp-title">{{ product.title }}</h1>
+      <p class="jb-pdp-price">{{ product.selected_or_first_available_variant.price | money }}</p>
+
+      <p class="jb-pdp-description">
+        {{ product.description | strip_html | truncatewords: 35 }}
+      </p>
+
+      <!-- Variant Form -->
+      {% form 'product', product, id: 'jb-product-form' %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        <!-- Option Selectors (Color & Size) -->
+        {% for option in product.options_with_values %}
+          <div class="jb-option-group">
+            <div class="jb-option-header">
+              <span class="jb-option-label">{{ option.name | uppercase }}:</span>
+              <span class="jb-option-selected" id="selected-{{ option.name | handle }}">{{ option.selected_value }}</span>
+            </div>
+            
+            <div class="jb-option-values">
+              {% for value in option.values %}
+                <button 
+                  type="button" 
+                  class="jb-option-btn {% if option.selected_value == value %}active{% endif %}"
+                  data-option-name="{{ option.name | handle }}"
+                  data-value="{{ value | escape }}"
+                >
+                  {{ value }}
+                </button>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+
+        <!-- High-Converting Add To Cart Button -->
+        <button 
+          type="submit" 
+          name="add" 
+          class="btn-checkout jb-add-to-cart"
+          {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}
+        >
+          {% if product.selected_or_first_available_variant.available %}
+            ADD TO BAG — {{ product.selected_or_first_available_variant.price | money }}
+          {% else %}
+            SOLD OUT
+          {% endif %}
+        </button>
+      {% endform %}
+
+      <!-- Trust & Frictionless Shipping Perks -->
+      <div class="jb-pdp-perks">
+        <div class="jb-perk-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12l5 5L20 7"/></svg>
+          <span>Free shipping on orders over $150</span>
+        </div>
+        <div class="jb-perk-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12l5 5L20 7"/></svg>
+          <span>Easy 30-day hassle-free returns</span>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
+</section>
+
 {% schema %}
 {
-  "name": "Product",
-  "settings": []
+  "name": "Joah Brown Product Detail",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Joah Brown Product Detail"
+    }
+  ]
 }
-{% endschema %}
+{% schema %}
