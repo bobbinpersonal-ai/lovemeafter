@@ -83,7 +83,7 @@
 .jb-pdp-description {
   font-size: 0.85rem;
   line-height: 1.6;
-  color: var(--text-muted);
+  color: rgba(var(--color-foreground), 0.75);
 }
 
 /* Variant Selector Buttons */
@@ -101,7 +101,7 @@
 }
 
 .jb-option-selected {
-  color: var(--text-muted);
+  color: rgba(var(--color-foreground), 0.75);
   font-weight: 400;
 }
 
@@ -113,7 +113,8 @@
 
 .jb-option-btn {
   background: transparent;
-  border: 1px solid var(--border-light);
+  border: 1px solid rgba(var(--color-foreground), 0.3);
+  color: rgb(var(--color-foreground));
   padding: 0.6rem 1.2rem;
   font-size: 0.75rem;
   font-weight: 600;
@@ -124,9 +125,9 @@
 
 .jb-option-btn.active,
 .jb-option-btn:hover {
-  border-color: var(--text-primary);
-  background: var(--text-primary);
-  color: #ffffff;
+  border-color: rgb(var(--color-foreground));
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
 }
 
 .jb-add-to-cart {
@@ -139,7 +140,7 @@
   flex-direction: column;
   gap: 0.5rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid rgba(var(--color-foreground), 0.15);
   margin-top: 1rem;
 }
 
@@ -148,5 +149,5 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: rgba(var(--color-foreground), 0.75);
 }
