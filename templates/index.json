@@ -4,13 +4,13 @@
       "type": "hero-editorial",
       "settings": {
         "color_scheme": "scheme-4",
-        "kicker": "LINGERIE \u00b7 SWIM \u00b7 AFTER DARK",
+        "kicker": "SWIM \u00b7 HEELS \u00b7 DRESSES",
         "heading": "FOR THE HOURS AFTER.",
-        "subheading": "Lingerie, swim & pieces made to be seen.",
-        "button_1_label": "SHOP LINGERIE",
-        "button_1_link": "/collections/lingerie",
+        "subheading": "Swim, heels & dresses made to be seen.",
+        "button_1_label": "SHOP NEW ARRIVALS",
+        "button_1_link": "/collections/new-arrivals",
         "button_2_label": "SHOP SWIM",
-        "button_2_link": "/collections/swim"
+        "button_2_link": "/collections/trending-swimware"
       }
     },
     "editorial_intro": {
@@ -49,54 +49,54 @@
         "color_scheme": "scheme-1"
       },
       "blocks": {
-        "after_dark": {
+        "swim": {
           "type": "tile",
           "settings": {
-            "title": "AFTER DARK",
-            "description": "Black lace, bodysuits, slips.",
-            "cta_label": "Shop After Dark",
-            "link": "/collections/after-dark"
+            "title": "SWIM",
+            "description": "Bikinis, one-pieces and cover-ups.",
+            "cta_label": "Shop Swim",
+            "collection": "trending-swimware"
           }
         },
-        "romance": {
+        "heels": {
           "type": "tile",
           "settings": {
-            "title": "ROMANCE",
-            "description": "Ivory, blush, bows and delicate lace.",
-            "cta_label": "Shop Romance",
-            "link": "/collections/romance"
+            "title": "HEELS",
+            "description": "Sandals and stilettos for after dark.",
+            "cta_label": "Shop Heels",
+            "collection": "heels"
           }
         },
-        "beach": {
+        "dresses": {
           "type": "tile",
           "settings": {
-            "title": "BEACH",
-            "description": "Bikinis, one-pieces and pareos.",
-            "cta_label": "Shop Beach",
-            "link": "/collections/swim"
+            "title": "DRESSES",
+            "description": "Pieces made to be seen.",
+            "cta_label": "Shop Dresses",
+            "collection": "dresses"
           }
         },
-        "essentials": {
+        "new_arrivals": {
           "type": "tile",
           "settings": {
-            "title": "ESSENTIALS",
-            "description": "Everyday underwear and core pieces.",
-            "cta_label": "Shop Essentials",
-            "link": "/collections/essentials"
+            "title": "NEW ARRIVALS",
+            "description": "Just landed.",
+            "cta_label": "Shop New Arrivals",
+            "collection": "new-arrivals"
           }
         }
       },
       "block_order": [
-        "after_dark",
-        "romance",
-        "beach",
-        "essentials"
+        "swim",
+        "heels",
+        "dresses",
+        "new_arrivals"
       ]
     },
     "romance_set": {
       "type": "featured-collection",
       "settings": {
-        "title": "THE ROMANCE SET",
+        "title": "SWIM SHOP",
         "products_to_show": 8,
         "columns_desktop": 4,
         "columns_mobile": "2",
@@ -113,151 +113,26 @@
       "settings": {
         "image_position": "left",
         "color_scheme": "scheme-4",
-        "heading": "LINGERIE YOU CAN LEAVE THE HOUSE IN.",
-        "text": "<p>A lace bodysuit under a blazer. A bikini with tailored trousers. A slip after midnight.</p><p>LOVEMEAFTER lives somewhere between lingerie and fashion.</p>",
-        "button_label": "SHOP AFTER DARK",
-        "button_link": "/collections/after-dark"
+        "heading": "DRESSED FOR THE HOURS AFTER.",
+        "text": "<p>A dress for the night. Heels that go the distance. A bikini for the morning after.</p><p>LOVEMEAFTER lives somewhere between occasion and everyday.</p>",
+        "button_label": "SHOP DRESSES",
+        "button_link": "/collections/dresses"
       }
     },
     "bestsellers": {
       "type": "featured-collection",
       "settings": {
-        "title": "THE ONES SHE KEEPS COMING BACK TO.",
-        "products_to_show": 4,
+        "title": "NEW ARRIVALS",
+        "products_to_show": 10,
         "columns_desktop": 4,
         "columns_mobile": "2",
-        "show_view_all": false,
+        "show_view_all": true,
         "color_scheme": "scheme-1",
         "padding_top": 56,
         "padding_bottom": 56,
         "quick_add": "standard",
-        "collection": "frontpage"
+        "collection": "new-arrivals"
       }
-    },
-    "video_grid": {
-      "type": "video-grid",
-      "settings": {
-        "heading": "AS SEEN ON YOU",
-        "color_scheme": "scheme-4"
-      },
-      "blocks": {
-        "v1": {
-          "type": "video",
-          "settings": {
-            "caption": ""
-          }
-        },
-        "v2": {
-          "type": "video",
-          "settings": {
-            "caption": ""
-          }
-        },
-        "v3": {
-          "type": "video",
-          "settings": {
-            "caption": ""
-          }
-        },
-        "v4": {
-          "type": "video",
-          "settings": {
-            "caption": ""
-          }
-        }
-      },
-      "block_order": [
-        "v1",
-        "v2",
-        "v3",
-        "v4"
-      ]
-    },
-    "seen_after_dark": {
-      "type": "image-tiles",
-      "settings": {
-        "heading": "SEEN AFTER DARK",
-        "color_scheme": "scheme-1"
-      },
-      "blocks": {
-        "ny": {
-          "type": "tile",
-          "settings": {
-            "title": "NEW YORK \u2014 11:47 PM",
-            "caption_only": true
-          }
-        },
-        "paris": {
-          "type": "tile",
-          "settings": {
-            "title": "PARIS \u2014 12:18 AM",
-            "caption_only": true
-          }
-        },
-        "tokyo": {
-          "type": "tile",
-          "settings": {
-            "title": "TOKYO \u2014 1:03 AM",
-            "caption_only": true
-          }
-        },
-        "la": {
-          "type": "tile",
-          "settings": {
-            "title": "LOS ANGELES \u2014 10:42 PM",
-            "caption_only": true
-          }
-        },
-        "sf": {
-          "type": "tile",
-          "settings": {
-            "title": "SAN FRANCISCO \u2014 11:21 PM",
-            "caption_only": true
-          }
-        }
-      },
-      "block_order": [
-        "ny",
-        "paris",
-        "tokyo",
-        "la",
-        "sf"
-      ]
-    },
-    "social": {
-      "type": "social-grid",
-      "settings": {
-        "heading": "@LOVEMEAFTER"
-      },
-      "blocks": {
-        "s1": {
-          "type": "image",
-          "settings": {}
-        },
-        "s2": {
-          "type": "image",
-          "settings": {}
-        },
-        "s3": {
-          "type": "image",
-          "settings": {}
-        },
-        "s4": {
-          "type": "image",
-          "settings": {}
-        },
-        "s5": {
-          "type": "image",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3",
-        "s4",
-        "s5"
-      ]
     },
     "newsletter": {
       "type": "newsletter-editorial",
@@ -274,9 +149,6 @@
     "romance_set",
     "editorial_split",
     "bestsellers",
-    "video_grid",
-    "seen_after_dark",
-    "social",
     "newsletter"
   ]
 }

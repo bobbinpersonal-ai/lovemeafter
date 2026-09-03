@@ -7,8 +7,9 @@
 
   <div class="image-tiles__grid image-tiles__grid--{{ section.blocks.size }}">
     {%- for block in section.blocks -%}
+      {%- assign tile_collection = collections[block.settings.collection] -%}
       <a
-        href="{{ block.settings.link | default: '#' }}"
+        href="{{ block.settings.link | default: tile_collection.url | default: '#' }}"
         class="image-tile{% if block.settings.caption_only %} image-tile--caption-only{% endif %}"
         {{ block.shopify_attributes }}
       >
@@ -19,6 +20,20 @@
             loading="lazy"
             width="{{ block.settings.image.width }}"
             height="{{ block.settings.image.height }}"
+            class="image-tile__image"
+          >
+        {%- elsif tile_collection.image -%}
+          <img
+            src="{{ tile_collection.image | image_url: width: 900 }}"
+            alt="{{ tile_collection.title | escape }}"
+            loading="lazy"
+            class="image-tile__image"
+          >
+        {%- elsif tile_collection.products.first.featured_media -%}
+          <img
+            src="{{ tile_collection.products.first.featured_media | image_url: width: 900 }}"
+            alt="{{ tile_collection.title | escape }}"
+            loading="lazy"
             class="image-tile__image"
           >
         {%- else -%}
@@ -56,6 +71,7 @@
       "name": "Tile",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "collection", "id": "collection", "label": "Collection (used for image and link if not set above)" },
         { "type": "text", "id": "title", "label": "Title" },
         { "type": "textarea", "id": "description", "label": "Description" },
         { "type": "text", "id": "cta_label", "label": "CTA label" },
