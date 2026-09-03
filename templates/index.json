@@ -104,7 +104,8 @@
         "color_scheme": "scheme-1",
         "padding_top": 56,
         "padding_bottom": 56,
-        "quick_add": "standard"
+        "quick_add": "standard",
+        "collection": "trending-swimware"
       }
     },
     "editorial_split": {
@@ -129,7 +130,8 @@
         "color_scheme": "scheme-1",
         "padding_top": 56,
         "padding_bottom": 56,
-        "quick_add": "standard"
+        "quick_add": "standard",
+        "collection": "frontpage"
       }
     },
     "video_grid": {
