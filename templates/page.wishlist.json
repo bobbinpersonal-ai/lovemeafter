@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-wishlist",
+      "settings": {
+        "heading": "Your Wishlist",
+        "empty_text": "Nothing saved yet. Tap the heart on anything you love.",
+        "empty_button_label": "Keep Shopping",
+        "empty_button_link": "/collections/all",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -188,6 +188,7 @@
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   for block in section.blocks
@@ -369,6 +370,12 @@
             {% render block %}
         {%- endcase -%}
       {%- endfor -%}
+
+      <a href="/pages/wishlist" class="header__icon header__icon--wishlist link focus-inset">
+        <span class="svg-wrapper">{{ 'icon-heart.svg' | inline_asset_content }}</span>
+        <span class="visually-hidden">Wishlist</span>
+        <span class="wishlist-count-bubble" data-wishlist-count hidden>0</span>
+      </a>
 
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         {% if cart == empty %}

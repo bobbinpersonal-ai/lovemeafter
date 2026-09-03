@@ -36,9 +36,15 @@
         {% endif %}
       </span>
       
-      <h1 class="jb-pdp-title">{{ product.title }}</h1>
+      <div class="jb-pdp-title-row">
+        <h1 class="jb-pdp-title">{{ product.title }}</h1>
+        {% render 'wishlist-button', product: product %}
+      </div>
       <p class="jb-pdp-price" id="ProductPrice-{{ section.id }}">
         {{ product.selected_or_first_available_variant.price | money }}
+        {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+          <s class="jb-pdp-compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</s>
+        {%- endif -%}
       </p>
 
       <div class="jb-pdp-description rte">

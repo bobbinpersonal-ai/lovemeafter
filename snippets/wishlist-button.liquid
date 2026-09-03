@@ -1,0 +1,18 @@
+{% comment %}
+  Renders a heart toggle button that saves a product to the client-side wishlist.
+
+  Accepts:
+  - product: {Object} Product Liquid object
+
+  Usage:
+  {% render 'wishlist-button', product: card_product %}
+{% endcomment %}
+<button
+  type="button"
+  class="wishlist-button"
+  data-wishlist-handle="{{ product.handle }}"
+  aria-pressed="false"
+  aria-label="Save {{ product.title | escape }} to wishlist"
+>
+  <span class="svg-wrapper">{{ 'icon-heart.svg' | inline_asset_content }}</span>
+</button>
