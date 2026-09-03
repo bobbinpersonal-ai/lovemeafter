@@ -12,9 +12,3 @@ node_modules
 *.zip
 .aider*
 .env
-.env*.local
-
-# Next.js
-.next
-out
-next-env.d.ts
