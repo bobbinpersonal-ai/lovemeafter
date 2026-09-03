@@ -41,9 +41,9 @@
         {{ product.selected_or_first_available_variant.price | money }}
       </p>
 
-      <p class="jb-pdp-description">
-        {{ product.description | strip_html | truncatewords: 35 }}
-      </p>
+      <div class="jb-pdp-description rte">
+        {{ product.description }}
+      </div>
 
       <!-- Variant Form -->
       <script type="application/json" id="ProductVariants-{{ section.id }}">
