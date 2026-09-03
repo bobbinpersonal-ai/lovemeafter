@@ -1,6 +1,10 @@
 {{ 'section-editorial-split.css' | asset_url | stylesheet_tag }}
 
 <section class="editorial-split{% if section.settings.image_position == 'right' %} editorial-split--image-right{% endif %}">
+  {%- liquid
+    assign split_collection = collections[section.settings.collection]
+    assign fallback_image = split_collection.image | default: split_collection.products.first.featured_media
+  -%}
   <div class="editorial-split__media">
     {%- if section.settings.image != blank -%}
       <img
@@ -9,6 +13,12 @@
         loading="lazy"
         width="{{ section.settings.image.width }}"
         height="{{ section.settings.image.height }}"
+      >
+    {%- elsif fallback_image -%}
+      <img
+        src="{{ fallback_image | image_url: width: 1400 }}"
+        alt="{{ split_collection.title | escape }}"
+        loading="lazy"
       >
     {%- else -%}
       <div class="editorial-split__placeholder">
@@ -36,6 +46,7 @@
   "name": "Editorial split",
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "collection", "id": "collection", "label": "Collection (used as image fallback if none picked above)" },
     {
       "type": "select",
       "id": "image_position",

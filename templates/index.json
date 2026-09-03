@@ -10,7 +10,8 @@
         "button_1_label": "SHOP NEW ARRIVALS",
         "button_1_link": "/collections/new-arrivals",
         "button_2_label": "SHOP SWIM",
-        "button_2_link": "/collections/trending-swimware"
+        "button_2_link": "/collections/trending-swimware",
+        "collection": "new-arrivals"
       }
     },
     "editorial_intro": {
@@ -116,7 +117,8 @@
         "heading": "DRESSED FOR THE HOURS AFTER.",
         "text": "<p>A dress for the night. Heels that go the distance. A bikini for the morning after.</p><p>LOVEMEAFTER lives somewhere between occasion and everyday.</p>",
         "button_label": "SHOP DRESSES",
-        "button_link": "/collections/dresses"
+        "button_link": "/collections/dresses",
+        "collection": "dresses"
       }
     },
     "bestsellers": {
