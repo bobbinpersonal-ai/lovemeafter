@@ -4,13 +4,13 @@
       "type": "hero-editorial",
       "settings": {
         "color_scheme": "scheme-4",
-        "kicker": "SWIM \u00b7 HEELS \u00b7 DRESSES",
+        "kicker": "NEW DRESSES JUST DROPPED",
         "heading": "FOR THE HOURS AFTER.",
-        "subheading": "Swim, heels & dresses made to be seen.",
-        "button_1_label": "SHOP NEW ARRIVALS",
-        "button_1_link": "/collections/new-arrivals",
-        "button_2_label": "SHOP SWIM",
-        "button_2_link": "/collections/trending-swimware",
+        "subheading": "The dress you'll wear twice. The heels that make it worth it. Shop what happens after dark.",
+        "button_1_label": "SHOP DRESSES",
+        "button_1_link": "/collections/dresses",
+        "button_2_label": "SHOP NEW ARRIVALS",
+        "button_2_link": "/collections/new-arrivals",
         "collection": "new-arrivals"
       }
     },
@@ -27,7 +27,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>LOVEMEAFTER creates intimate pieces designed for bedrooms, beaches, city nights and everywhere in between.</p>"
+            "text": "<p>Pieces made for bedrooms, beaches, and everywhere after dark — worn once, remembered longer.</p>"
           }
         }
       },
@@ -72,7 +72,7 @@
           "type": "tile",
           "settings": {
             "title": "DRESSES",
-            "description": "Pieces made to be seen.",
+            "description": "10 new arrivals, zero basics.",
             "cta_label": "Shop Dresses",
             "collection": "dresses"
           }
@@ -115,7 +115,7 @@
         "image_position": "left",
         "color_scheme": "scheme-4",
         "heading": "DRESSED FOR THE HOURS AFTER.",
-        "text": "<p>A dress for the night. Heels that go the distance. A bikini for the morning after.</p><p>LOVEMEAFTER lives somewhere between occasion and everyday.</p>",
+        "text": "<p>One dress for the night you don't want to end. LOVEMEAFTER lives between occasion and everyday — wear it out, wear it again.</p>",
         "button_label": "SHOP DRESSES",
         "button_link": "/collections/dresses",
         "collection": "dresses"
@@ -124,7 +124,7 @@
     "bestsellers": {
       "type": "featured-collection",
       "settings": {
-        "title": "NEW ARRIVALS",
+        "title": "JUST DROPPED",
         "products_to_show": 10,
         "columns_desktop": 4,
         "columns_mobile": "2",
